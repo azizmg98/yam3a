@@ -7,8 +7,8 @@ const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
   return (
     // screenOptions renders options for all screens
-    <Navigator initialRouteName="Home" screenOptions={{}}>
-      <Screen name="Home" component={Home} options={{}}/>
+    <Navigator initialRouteName="Signup" screenOptions={{}}>
+      <Screen name="Home" component={Home} options={{}} />
       <Screen name="Signup" component={Signup} />
     </Navigator>
   );

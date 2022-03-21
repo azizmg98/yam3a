@@ -1,13 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import styles from "./styles";
+import styles from "./shared/Styles";
+import YATitle from "./shared/YATitle";
 
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title} onPress={() => navigation.navigate("Signup")}>
-        Hello
-      </Text>
+      <Title onPress={() => navigation.navigate("Signup")}>Hello</Title>
     </View>
   );
 };
