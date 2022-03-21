@@ -20,9 +20,9 @@ const Home = ({ route, navigation }) => {
           SignOut
         </Button>
       </NativeBaseProvider>
-      <Text style={styles.title} onPress={() => navigation.navigate("Signin")}>
+      {/* <Text style={styles.title} onPress={() => navigation.navigate("Signin")}>
         Hello
-      </Text>
+      </Text> */}
     </View>
   );
 };

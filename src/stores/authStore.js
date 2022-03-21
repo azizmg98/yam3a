@@ -16,8 +16,11 @@ class AuthStore {
       const res = await instance.post("/authenticate/signin", user); //http://localhost:5000/api/authenticate/signin
       this.setUser(res.data.token);
       //console.log(res.data.token);
-      navigation.navigate("Home");
+      console.log("authstore user");
       console.log(this.user);
+      console.log("authstore token");
+      console.log(res.data.token);
+      navigation.navigate("Home");
     } catch (error) {
       if (error.message == "Request failed with status code 401") {
         alert("username or password is wrong");
@@ -45,6 +48,7 @@ class AuthStore {
     await AsyncStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.user = decode(token);
+    console.log(this.user);
   };
 
   checkForToken = async () => {
