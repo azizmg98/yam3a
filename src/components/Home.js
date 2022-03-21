@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import styles from "./styles";
+import styles from "./shared/Styles";
+import YATitle from "./shared/YATitle";
 import authStore from "../stores/authStore";
 import { Button, NativeBaseProvider } from "native-base";
 

@@ -33,7 +33,6 @@ class AuthStore {
     try {
       const res = await instance.post("/authenticate/signup", userData);
       this.setUser(res.data.token);
-      console.log(this.user);
     } catch (error) {
       console.log(error);
     }
