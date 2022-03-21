@@ -1,20 +1,15 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import styles from "./styles";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>Hello</Text>
+      <Text style={styles.title} onPress={() => navigation.navigate("Signup")}>
+        Hello
+      </Text>
     </View>
   );
 };
 
 export default Home;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});

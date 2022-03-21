@@ -1,4 +1,7 @@
 import { instance } from "./instance";
+import { makeAutoObservable } from "mobx";
+import decode from "jwt-decode";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class AuthStore {
   user = null;
@@ -7,17 +10,44 @@ class AuthStore {
     makeAutoObservable(this);
   }
 
-  signin = async () => {}
+  signin = async () => {};
 
-  signup = async () => {}
+  signup = async (userData) => {
+    try {
+      const res = await instance.post("/authenticate/signup", userData);
+      this.setUser(res.data.token);
+      console.log(this.user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  signout = async () => {}
+  signout = async () => {
+    this.user = null;
+    await AsyncStorage.removeItem("token");
+  };
 
-  setUser = async () => {}
+  setUser = async (token) => {
+    await AsyncStorage.setItem("myToken", token);
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    this.user = decode(token);
+  };
 
-  checkForToken = async () => {}
+  checkForToken = async () => {
+    const token = await AsyncStorage.getItem("myToken");
+
+    if (token) {
+      const decodedToken = decode(token);
+      if (Date.now() < +decodedToken.exp) {
+        this.setUser(token);
+      } else {
+        this.signout();
+      }
+    }
+  };
 }
 
 const authStore = new AuthStore();
+authStore.checkForToken();
 
 export default authStore;
