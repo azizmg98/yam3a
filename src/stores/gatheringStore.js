@@ -12,7 +12,6 @@ class GatheringStore {
     try {
       const res = await instance.get("gatherings");
       this.gathering = res.data;
-      //   console.log(this.gathering);
     } catch (error) {
       console.error(error);
     }
