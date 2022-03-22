@@ -40,6 +40,9 @@ class AuthStore {
 
   signout = async () => {
     this.user = null;
+
+    console.log(this.user);
+
     await AsyncStorage.removeItem("myToken");
   };
 
@@ -47,12 +50,12 @@ class AuthStore {
     await AsyncStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.user = decode(token);
+    console.log("set user");
     console.log(this.user);
   };
 
   checkForToken = async () => {
     const token = await AsyncStorage.getItem("myToken");
-
     if (token) {
       const decodedToken = decode(token);
       if (Date.now() < +decodedToken.exp) {

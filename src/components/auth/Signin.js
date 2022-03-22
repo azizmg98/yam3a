@@ -73,10 +73,7 @@ const Signin = ({ navigation }) => {
                   autoCorrect={false}
                 />
               </FormControl>
-              <FormControl>
-                <FormControl.Label>Phone Number</FormControl.Label>
-                <Input onChangeText={(phone) => setUser({ ...user, phone })} />
-              </FormControl>
+
               <FormControl>
                 <FormControl.Label>Password</FormControl.Label>
                 <Input
@@ -145,7 +142,7 @@ const styles = StyleSheet.create({
 
   pass: {
     textDecorationLine: "underline",
-    color: "#6366F1",
+    color: "#6320EE",
     marginLeft: "57%",
   },
 });

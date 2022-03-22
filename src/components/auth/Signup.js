@@ -14,7 +14,7 @@ import YAButton from "../shared/YAButton";
 import { useState } from "react";
 import authStore from "../../stores/authStore";
 
-const Signup = ({ navigation }) => {
+const Signup = ({ route, navigation }) => {
   const [user, setUser] = useState({
     username: "",
     password: "",

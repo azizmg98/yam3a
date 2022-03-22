@@ -8,6 +8,7 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: 45,
+    marginTop: 30,
     fontWeight: "bold",
     color: "rgba(69, 69, 69, 1)",
   },
