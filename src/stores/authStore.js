@@ -5,6 +5,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class AuthStore {
   user = null;
+  users = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -16,10 +17,11 @@ class AuthStore {
       const res = await instance.post("/authenticate/signin", user); //http://localhost:5000/api/authenticate/signin
       this.setUser(res.data.token);
       //console.log(res.data.token);
-      console.log("authstore user");
-      console.log(this.user);
-      console.log("authstore token");
-      console.log(res.data.token);
+      // console.log("authstore user");
+      // console.log(this.user);
+      // console.log("authstore token");
+      // console.log(res.data.token);
+      this.fetchUsers();
       navigation.navigate("Home");
     } catch (error) {
       if (error.message == "Request failed with status code 401") {
@@ -37,9 +39,22 @@ class AuthStore {
       console.log(error);
     }
   };
+  fetchUsers = async () => {
+    try {
+      console.log("fetchusers");
+      console.log(this.users);
+      const response = await instance.get("/authenticate");
+      this.users = response.data;
+      console.log("fetchusers");
+      console.log(this.users);
+    } catch (error) {
+      console.log("AuthStore -> fetchUsers -> error", error);
+    }
+  };
 
   signout = async () => {
     this.user = null;
+    this.users = [];
     console.log(this.user);
     await AsyncStorage.removeItem("myToken");
   };
