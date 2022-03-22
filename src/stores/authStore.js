@@ -13,16 +13,9 @@ class AuthStore {
 
   signin = async (user, navigation) => {
     try {
-      // user = { username: "Ali Ahmad", password: "123KDD"}
-      const res = await instance.post("/authenticate/signin", user); //http://localhost:5000/api/authenticate/signin
+      const res = await instance.post("/authenticate/signin", user);
       this.setUser(res.data.token);
-      //console.log(res.data.token);
-      // console.log("authstore user");
-      // console.log(this.user);
-      // console.log("authstore token");
-      // console.log(res.data.token);
-      this.fetchUsers();
-      navigation.navigate("Home");
+      navigation.navigate("GatheringList");
     } catch (error) {
       if (error.message == "Request failed with status code 401") {
         alert("username or password is wrong");
@@ -31,10 +24,11 @@ class AuthStore {
     }
   };
 
-  signup = async (userData) => {
+  signup = async (userData, navigation) => {
     try {
       const res = await instance.post("/authenticate/signup", userData);
       this.setUser(res.data.token);
+      navigation.navigate("Home");
     } catch (error) {
       console.log(error);
     }
@@ -55,7 +49,7 @@ class AuthStore {
   signout = async () => {
     this.user = null;
     this.users = [];
-    console.log(this.user);
+    // console.log(this.user);
     await AsyncStorage.removeItem("myToken");
   };
 
@@ -63,8 +57,6 @@ class AuthStore {
     await AsyncStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.user = decode(token);
-    console.log("set user");
-    console.log(this.user);
   };
 
   checkForToken = async () => {
