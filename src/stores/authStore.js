@@ -72,19 +72,6 @@ class AuthStore {
   };
 }
 
-// checkForToken = async () => {
-//     this.getData();
-//     const token = this.user;
-//     if (token) {
-//       const decodedToken = decode(token);
-//       console.log(decodedToken);
-//       if (Date.now() < +decodedToken.exp) {
-//         this.setUser(token);
-//       } else this.unSetUser();
-//     }
-//   };
-// }
-
 const authStore = new AuthStore();
 authStore.checkForToken();
 

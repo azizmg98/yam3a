@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React from "react";
 import { Image, Input, NativeBaseProvider } from "native-base";
 import { useState } from "react/cjs/react.development";
-import YAButton from "../shared/YAButton";
+import YAButton from "../shared/YAWideButton";
 import locationStore from "../../stores/locationStore";
 import { observer } from "mobx-react";
 
