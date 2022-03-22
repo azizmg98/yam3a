@@ -8,6 +8,7 @@ import LocationCreate from "../components/location/LocationCreate";
 import LocationList from "../components/location/LocationList";
 
 import user from "../stores/authStore";
+import GuestsList from "../components/users/GuestsList";
 
 
 const { Navigator, Screen } = createStackNavigator();
@@ -15,6 +16,8 @@ const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
   return (
     // screenOptions renders options for all screens
+
+
 
    <Navigator initialRouteName="Signin" screenOptions={{}}>
     
@@ -39,10 +42,17 @@ const RootNavigator = () => {
         component={LocationList}
       />
 
- 
+
       <Screen
         name="Home"
         component={Home}
+        options={{ headerRight: () => <Signout /> }}
+      />
+
+
+      <Screen
+        name="GuestList"
+        component={GuestsList}
         options={{ headerRight: () => <Signout /> }}
       />
 
