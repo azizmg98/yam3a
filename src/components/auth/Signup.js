@@ -62,11 +62,7 @@ const Signup = ({ navigation }) => {
             keyboardType="numeric"
             onChangeText={(phone) => setUser({ ...user, phone })}
           />
-          <YAButton
-            onPress={handleSubmit}
-            title="Sign up"
-            color="rgba(99, 32, 238, 1)"
-          />
+          <YAButton onPress={handleSubmit} title="Sign up" />
         </View>
       </View>
     </TouchableWithoutFeedback>
