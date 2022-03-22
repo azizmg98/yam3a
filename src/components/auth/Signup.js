@@ -2,17 +2,16 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput,
-  Button,
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
 } from "react-native";
 import styles from "../shared/Styles";
 import YATextInput from "../shared/YATextInput";
-import YAButton from "../shared/YAButton";
+import YAButton from "../shared/YAWideButton";
 import { useState } from "react";
 import authStore from "../../stores/authStore";
+import { NativeBaseProvider } from "native-base";
 
 const Signup = ({ route, navigation }) => {
   const [user, setUser] = useState({
@@ -29,43 +28,44 @@ const Signup = ({ route, navigation }) => {
       setIsPasswordMatch(false);
     }
   };
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (isPasswordMatch) {
-      await authStore.signup(user);
-      navigation.navigate("Home");
+      authStore.signup(user, navigation);
     } else {
       Alert.alert("password mismatch");
     }
   };
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
-        <View style={styles.subContainer}>
-          <Text style={styles.title}>Registration</Text>
-          <YATextInput
-            placeholder="Username"
-            onChangeText={(username) => setUser({ ...user, username })}
-          />
-          <YATextInput
-            placeholder="password"
-            secureTextEntry={true}
-            onChangeText={(password) => setUser({ ...user, password })}
-          />
-          <YATextInput
-            placeholder="confirm password"
-            secureTextEntry={true}
-            onChangeText={(cpassword) => confirmPassword(cpassword)}
-          />
-          <YATextInput
-            placeholder="phone"
-            keyboardType="numeric"
-            onChangeText={(phone) => setUser({ ...user, phone })}
-          />
-          <YAButton onPress={handleSubmit} title="Sign up" />
+    <NativeBaseProvider>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <View style={styles.subContainer}>
+            <Text style={styles.title}>Registration</Text>
+            <YATextInput
+              placeholder="Username"
+              onChangeText={(username) => setUser({ ...user, username })}
+            />
+            <YATextInput
+              placeholder="password"
+              secureTextEntry={true}
+              onChangeText={(password) => setUser({ ...user, password })}
+            />
+            <YATextInput
+              placeholder="Confirm password"
+              secureTextEntry={true}
+              onChangeText={(cpassword) => confirmPassword(cpassword)}
+            />
+            <YATextInput
+              placeholder="Phone"
+              keyboardType="numeric"
+              onChangeText={(phone) => setUser({ ...user, phone })}
+            />
+            <YAButton handlePress={handleSubmit}>Sign Up</YAButton>
+          </View>
         </View>
-      </View>
-    </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback>
+    </NativeBaseProvider>
   );
 };
 

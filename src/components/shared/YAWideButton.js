@@ -1,14 +1,12 @@
 import { StyleSheet } from "react-native";
-import React from "react";
 import { Button, NativeBaseProvider } from "native-base";
 
-const YAButton = (props, title) => {
+// destructor props later
+const YAButton = ({ children, ...props }) => {
   return (
-    <NativeBaseProvider>
-      <Button {...props} style={styles.button}>
-        {{ title }}
-      </Button>
-    </NativeBaseProvider>
+    <Button mt={props.mt} onPress={props.handlePress} style={styles.button}>
+      {children || props.title}
+    </Button>
   );
 };
 
@@ -19,5 +17,6 @@ const styles = StyleSheet.create({
     width: "100%",
     color: "rgba(99, 32, 238, 1)",
     backgroundColor: "rgba(99, 32, 238, 1)",
+    textAlign: "center",
   },
 });

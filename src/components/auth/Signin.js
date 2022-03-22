@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import authStore from "../../stores/authStore";
+import YAButton from "../shared/YAWideButton";
 import {
   SafeAreaView,
   StyleSheet,
@@ -21,6 +22,7 @@ import {
   Link,
   NativeBaseProvider,
 } from "native-base";
+import YATextInput from "../shared/YATextInput";
 
 const Signin = ({ navigation }) => {
   const [user, setUser] = useState({ username: "", password: "", phone: "" });
@@ -28,8 +30,10 @@ const Signin = ({ navigation }) => {
   const handleSubmit = () => {
     authStore.signin(user, navigation);
   };
+  // check styling and decide which style is better
+  // textinput and headings
 
-  console.log(user);
+  // console.log(user);
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <NativeBaseProvider>
@@ -50,7 +54,7 @@ const Signin = ({ navigation }) => {
                 color: "warmGray.50",
               }}
             >
-              Welcome To Nomadic
+              Welcome To Yam3a
             </Heading>
             <Heading
               mt="1"
@@ -75,8 +79,12 @@ const Signin = ({ navigation }) => {
 
               <FormControl>
                 <FormControl.Label>Password</FormControl.Label>
-                <Input
+                {/* <Input
                   type="password"
+                  onChangeText={(password) => setUser({ ...user, password })}
+                /> */}
+                <YATextInput
+                  placeholder="Password"
                   onChangeText={(password) => setUser({ ...user, password })}
                 />
                 {/* <Text
@@ -93,9 +101,10 @@ const Signin = ({ navigation }) => {
                   Forget Password?
                 </Text> */}
               </FormControl>
-              <Button onPress={handleSubmit} mt="2" colorScheme="indigo">
+              {/* <Button onPress={handleSubmit} mt="2" colorScheme="indigo">
                 Sign in
-              </Button>
+              </Button> */}
+              <YAButton title="Sign in" mt="100" handlePress={handleSubmit} />
               <HStack mt="6" justifyContent="center">
                 <Text
                   fontSize="sm"

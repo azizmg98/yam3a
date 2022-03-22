@@ -1,8 +1,11 @@
 import { StyleSheet, TextInput } from "react-native";
+import { Input } from "native-base";
 import React from "react";
 
 const YATextInput = (props) => {
-  return <TextInput {...props} style={styles.textInput}></TextInput>;
+  return (
+    <Input variant="underlined" {...props} style={styles.textInput}></Input>
+  );
 };
 
 export default YATextInput;
