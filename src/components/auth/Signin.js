@@ -26,10 +26,10 @@ const Signin = ({ navigation }) => {
   const [user, setUser] = useState({ username: "", password: "", phone: "" });
 
   const handleSubmit = () => {
+    console.log(user);
     authStore.signin(user, navigation);
   };
 
-  console.log(user);
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <NativeBaseProvider>
@@ -50,7 +50,7 @@ const Signin = ({ navigation }) => {
                 color: "warmGray.50",
               }}
             >
-              Welcome To Nomadic
+              Welcome to Yam3a
             </Heading>
             <Heading
               mt="1"
@@ -64,12 +64,13 @@ const Signin = ({ navigation }) => {
             >
               Sign in to continue!
             </Heading>
-
             <VStack space={3} mt="5">
               <FormControl>
                 <FormControl.Label>Username</FormControl.Label>
                 <Input
                   onChangeText={(username) => setUser({ ...user, username })}
+                  autoCapitalize="none"
+                  autoCorrect={false}
                 />
               </FormControl>
 

@@ -42,7 +42,7 @@ const Signup = ({ route, navigation }) => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <View style={styles.subContainer}>
-          <Text style={styles.title}>Registration</Text>
+          <Text style={styles.title}>Sign Up</Text>
           <YATextInput
             placeholder="Username"
             onChangeText={(username) => setUser({ ...user, username })}
