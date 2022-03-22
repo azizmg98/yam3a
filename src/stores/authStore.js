@@ -5,6 +5,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class AuthStore {
   user = null;
+  users = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -32,9 +33,23 @@ class AuthStore {
       console.log(error);
     }
   };
+  fetchUsers = async () => {
+    try {
+      console.log("fetchusers");
+      console.log(this.users);
+      const response = await instance.get("/authenticate");
+      this.users = response.data;
+      console.log("fetchusers");
+      console.log(this.users);
+    } catch (error) {
+      console.log("AuthStore -> fetchUsers -> error", error);
+    }
+  };
 
   signout = async () => {
     this.user = null;
+    this.users = [];
+    // console.log(this.user);
     await AsyncStorage.removeItem("myToken");
   };
 
