@@ -13,17 +13,13 @@ const Home = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <NativeBaseProvider>
-        <Button
-          color="rgba(99, 32, 238, 1)"
-          onPress={handleSignout}
-          title="SignOut"
+        <Text
+          style={styles.title}
+          onPress={() => navigation.navigate("Signin")}
         >
-          SignOut
-        </Button>
+          Hello
+        </Text>
       </NativeBaseProvider>
-      {/* <Text style={styles.title} onPress={() => navigation.navigate("Signin")}>
-        Hello
-      </Text> */}
     </View>
   );
 };
