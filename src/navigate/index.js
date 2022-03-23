@@ -6,7 +6,6 @@ import Home from "../components/Home";
 import GatheringList from "../components/gathering/GatheringList";
 import LocationCreate from "../components/location/LocationCreate";
 import LocationList from "../components/location/LocationList";
-import user from "../stores/authStore";
 import GuestsList from "../components/users/GuestsList";
 
 const { Navigator, Screen } = createStackNavigator();
@@ -15,7 +14,7 @@ const RootNavigator = () => {
   return (
     // screenOptions renders options for all screens
 
-    <Navigator initialRouteName="Signin" screenOptions={{}}>
+    <Navigator initialRouteName="GatheringList" screenOptions={{}}>
       <Screen
         name="Signup"
         component={Signup}
@@ -46,6 +45,12 @@ const RootNavigator = () => {
       <Screen
         name="GuestList"
         component={GuestsList}
+        options={{ headerRight: () => <Signout /> }}
+      />
+
+      <Screen
+        name="GatheringList"
+        component={GatheringList}
         options={{ headerRight: () => <Signout /> }}
       />
     </Navigator>

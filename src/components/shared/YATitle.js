@@ -2,7 +2,11 @@ import { StyleSheet, Text } from "react-native";
 import React from "react";
 
 const YATitle = (props) => {
-  return <Text {...props} style={styles.title}></Text>;
+  return (
+    <Text {...props} style={styles.title}>
+      {props.title}
+    </Text>
+  );
 };
 
 export default YATitle;
