@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import YAAvatar from "./YAAvatar";
 import {
   Box,
   AspectRatio,
@@ -23,6 +24,7 @@ const YAListItem = () => {
       //   p="16"
       m="2"
     >
+      <YAAvatar />
       <Text>hi</Text>
     </Box>
   );

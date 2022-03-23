@@ -28,7 +28,6 @@ const Signin = ({ navigation }) => {
   const [user, setUser] = useState({ username: "", password: "", phone: "" });
 
   const handleSubmit = () => {
-    console.log(user);
     authStore.signin(user, navigation);
   };
   // check styling and decide which style is better
