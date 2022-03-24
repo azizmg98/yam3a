@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import authStore from "../../stores/authStore";
-import YAButton from "../shared/YAWideButton";
 import {
   SafeAreaView,
   StyleSheet,
@@ -22,7 +21,6 @@ import {
   Link,
   NativeBaseProvider,
 } from "native-base";
-import YATextInput from "../shared/YATextInput";
 
 const Signin = ({ navigation }) => {
   const [user, setUser] = useState({ username: "", password: "", phone: "" });
@@ -30,10 +28,8 @@ const Signin = ({ navigation }) => {
   const handleSubmit = () => {
     authStore.signin(user, navigation);
   };
-  // check styling and decide which style is better
-  // textinput and headings
 
-  // console.log(user);
+  console.log(user);
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <NativeBaseProvider>
@@ -54,7 +50,7 @@ const Signin = ({ navigation }) => {
                 color: "warmGray.50",
               }}
             >
-              Welcome to Yam3a
+              Welcome To Nomadic
             </Heading>
             <Heading
               mt="1"
@@ -68,24 +64,19 @@ const Signin = ({ navigation }) => {
             >
               Sign in to continue!
             </Heading>
+
             <VStack space={3} mt="5">
               <FormControl>
                 <FormControl.Label>Username</FormControl.Label>
                 <Input
                   onChangeText={(username) => setUser({ ...user, username })}
-                  autoCapitalize="none"
-                  autoCorrect={false}
                 />
               </FormControl>
 
               <FormControl>
                 <FormControl.Label>Password</FormControl.Label>
-                {/* <Input
+                <Input
                   type="password"
-                  onChangeText={(password) => setUser({ ...user, password })}
-                /> */}
-                <YATextInput
-                  placeholder="Password"
                   onChangeText={(password) => setUser({ ...user, password })}
                 />
                 {/* <Text
@@ -102,10 +93,9 @@ const Signin = ({ navigation }) => {
                   Forget Password?
                 </Text> */}
               </FormControl>
-              {/* <Button onPress={handleSubmit} mt="2" colorScheme="indigo">
+              <Button onPress={handleSubmit} mt="2" colorScheme="indigo">
                 Sign in
-              </Button> */}
-              <YAButton title="Sign in" mt="100" handlePress={handleSubmit} />
+              </Button>
               <HStack mt="6" justifyContent="center">
                 <Text
                   fontSize="sm"

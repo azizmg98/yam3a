@@ -6,8 +6,13 @@ import Home from "../components/Home";
 import GatheringList from "../components/gathering/GatheringList";
 import LocationCreate from "../components/location/LocationCreate";
 import LocationList from "../components/location/LocationList";
+
+import user from "../stores/authStore";
+import GuestsList from "../components/users/guest/GuestsList";
+
 import GuestsList from "../components/users/GuestsList";
 import GatheringDetail from "../components/gathering/GatheringDetail";
+
 
 const { Navigator, Screen } = createStackNavigator();
 
