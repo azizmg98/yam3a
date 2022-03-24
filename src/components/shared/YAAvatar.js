@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { HStack, Avatar } from "native-base";
+import { Avatar } from "native-base";
 
 const YAAvatar = (props) => {
   return (
@@ -10,7 +10,7 @@ const YAAvatar = (props) => {
       }}
     >
       NB
-      <Avatar.Badge bg={"red.200"} />
+      <Avatar.Badge bg={"green.200"} />
     </Avatar>
   );
 };

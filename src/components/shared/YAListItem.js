@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import YATitle from "../shared/YATitle";
+import YATitle from "./YATitle";
 import {
   Box,
   AspectRatio,
@@ -31,20 +31,18 @@ const YAListItem = () => {
     >
       <HStack>
         <YAImageS m="4" />
-        <YATitle title="Coded Zwara" fontSize="25" mt="1.5" right="1" />
+        <Center>
+          <VStack>
+            <YATitle title="Coded Zwara" fontSize="25" />
+            <YAText
+              title="Friday, March 25"
+              fontSize="14"
+              color="rgba(154, 151, 151, 1)"
+            />
+            <YAAvatar size="sm" />
+          </VStack>
+        </Center>
       </HStack>
-      <Center>
-        <VStack>
-          <YAText
-            title="Friday, March 25"
-            fontSize="14"
-            color="rgba(154, 151, 151, 1)"
-            bottom="70"
-            right="4"
-          />
-          <YAAvatar bottom="16" size="sm" right="4" />
-        </VStack>
-      </Center>
     </Box>
   );
 };
