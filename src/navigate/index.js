@@ -7,14 +7,14 @@ import GatheringList from "../components/gathering/GatheringList";
 import LocationCreate from "../components/location/LocationCreate";
 import LocationList from "../components/location/LocationList";
 import GuestsList from "../components/users/GuestsList";
+import GatheringDetail from "../components/gathering/GatheringDetail";
 
 const { Navigator, Screen } = createStackNavigator();
 
 const RootNavigator = () => {
   return (
     // screenOptions renders options for all screens
-
-    <Navigator initialRouteName="GatheringList" screenOptions={{}}>
+    <Navigator initialRouteName="LocationCreate" screenOptions={{}}>
       <Screen
         name="Signup"
         component={Signup}
@@ -27,9 +27,15 @@ const RootNavigator = () => {
       />
       <Screen
         name="LocationCreate"
-        options={{ headerTitle: "Add New Location" }}
         component={LocationCreate}
+        options={{ headerShown: false }}
       />
+      <Screen
+        name="GatheringList"
+        options={{ headerTitle: "Hosted Gatherings", headerLeft: false }}
+        component={GatheringList}
+      />
+
       <Screen
         name="LocationList"
         options={{ headerTitle: "My Locations" }}
@@ -52,6 +58,11 @@ const RootNavigator = () => {
         name="GatheringList"
         component={GatheringList}
         options={{ headerRight: () => <Signout /> }}
+      />
+      <Screen
+        name="GatheringDetail"
+        component={GatheringDetail}
+        options={{ headerShown: false }}
       />
     </Navigator>
   );
