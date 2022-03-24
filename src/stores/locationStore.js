@@ -15,8 +15,8 @@ class LocationStore {
     try {
       const response = await instance.get("/locations");
       this.locations = response.data;
-      console.log("fetch Locations");
-      console.log(this.locations);
+      // console.log("fetch Locations");
+      // console.log(this.locations);
     } catch (error) {
       console.log(error);
     }

@@ -1,17 +1,11 @@
-import {
-  FlatList,
-  StyleSheet,
-  View,
-  ScrollView,
-  Dimensions,
-} from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
 import { observer } from "mobx-react";
 import GuestItem from "./GuestItem";
-import authStore from "../../stores/authStore";
+import authStore from "../../../stores/authStore";
 // import { Avatar } from "native-base";
 
 const GuestList = () => {
-  const guestList = authStore.users.map((user) => (
+  const guestList = authStore.usersToInvite.map((user) => (
     <GuestItem key={user._id} user={user} />
   ));
 

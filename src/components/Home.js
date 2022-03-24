@@ -4,7 +4,7 @@ import styles from "./shared/Styles";
 import YATitle from "./shared/YATitle";
 import authStore from "../stores/authStore";
 import { Button, NativeBaseProvider } from "native-base";
-import GuestsList from "./users/GuestsList";
+import GuestsList from "./users/guest/GuestsList";
 
 const Home = ({ route, navigation }) => {
   const handleSignout = (user) => {
