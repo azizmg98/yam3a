@@ -55,6 +55,11 @@ const RootNavigator = () => {
       />
 
       <Screen
+        name="GatheringList"
+        component={GatheringList}
+        options={{ headerRight: () => <Signout /> }}
+      />
+      <Screen
         name="GatheringDetail"
         component={GatheringDetail}
         options={{ headerShown: false }}

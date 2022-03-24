@@ -5,8 +5,6 @@ import locationStore from "../../stores/locationStore";
 import { NativeBaseProvider } from "native-base";
 
 const LocationItem = ({ location }) => {
-  console.log("Location Item");
-  console.log(location);
   return (
     <NativeBaseProvider>
       <Text>{location.title}</Text>
