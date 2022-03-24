@@ -1,13 +1,17 @@
 import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React from "react";
-import { Image, Input, NativeBaseProvider } from "native-base";
+import { Input, NativeBaseProvider, Pressable } from "native-base";
 import { useState } from "react/cjs/react.development";
+// importing styling shared components:
 import YAButton from "../shared/YAWideButton";
+import YATitle from "../shared/YATitle";
+// importing Stores:
 import locationStore from "../../stores/locationStore";
-import { observer } from "mobx-react";
+// importing the map:
+import MapScreen from "./MapScreen";
 
 const LocationCreate = () => {
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState();
 
   const handleSubmit = () => {
     console.log("inside handle submit");
@@ -17,64 +21,59 @@ const LocationCreate = () => {
 
   return (
     <NativeBaseProvider>
-      <View style={styles.imageContainer}>
-        <Image
-          source={{
-            uri: "https://i0.wp.com/www.cssscript.com/wp-content/uploads/2018/03/Simple-Location-Picker.png?fit=561%2C421&ssl=1",
-          }}
-          style={styles.imageStyle}
-          alt="Refine location on map"
-        />
-      </View>
-      <View>
-        <Text
-          style={{
-            marginBottom: 7,
-            marginTop: 20,
-            marginRight: 20,
-            marginLeft: 20,
-          }}
-        >
-          Name Your Location:
-        </Text>
-        <View
-          style={{
-            marginBottom: 7,
-            marginRight: 20,
-            marginLeft: 20,
-          }}
-        >
-          <Input
-            autoCorrect={false}
-            onChangeText={(title) => setLocation({ ...location, title })}
-          ></Input>
+      <YATitle title="Add New Location" />
+      <View style={styles.container}>
+        <MapScreen style={styles.mapScreen} />
+        <View style={styles.locationForm}>
+          <Text
+            style={{
+              marginBottom: 7,
+              marginTop: 20,
+              marginRight: 20,
+              marginLeft: 20,
+            }}
+          >
+            Name Your Location:
+          </Text>
+          <View
+            style={{
+              marginBottom: 7,
+              marginRight: 20,
+              marginLeft: 20,
+            }}
+          >
+            <Input
+              autoCorrect={false}
+              onChangeText={(title) => setLocation({ ...location, title })}
+            ></Input>
+          </View>
+          <Text
+            style={{
+              marginBottom: 7,
+              marginTop: 20,
+              marginRight: 20,
+              marginLeft: 20,
+            }}
+          >
+            Enter Address:
+          </Text>
+          <View
+            style={{
+              marginBottom: 7,
+              marginRight: 20,
+              marginLeft: 20,
+            }}
+          >
+            <Input
+              autoCorrect={false}
+              onChangeText={(address) => setLocation({ ...location, address })}
+            ></Input>
+          </View>
+
+          <View>
+            <YAButton title="Add Location" handlePress={handleSubmit} />
+          </View>
         </View>
-        <Text
-          style={{
-            marginBottom: 7,
-            marginTop: 20,
-            marginRight: 20,
-            marginLeft: 20,
-          }}
-        >
-          Enter Address:{" "}
-        </Text>
-        <View
-          style={{
-            marginBottom: 7,
-            marginRight: 20,
-            marginLeft: 20,
-          }}
-        >
-          <Input
-            autoCorrect={false}
-            onChangeText={(address) => setLocation({ ...location, address })}
-          ></Input>
-        </View>
-      </View>
-      <View>
-        {/* <Button style={styles.locationBtn}>Add Location</Button> */}
-        <YAButton title="Add Location" onPress={handleSubmit} />
       </View>
     </NativeBaseProvider>
   );
@@ -83,22 +82,17 @@ const LocationCreate = () => {
 export default LocationCreate;
 
 const styles = StyleSheet.create({
-  imageContainer: {
-    backgroundColor: "lightgrey",
-    paddingTop: 30,
-    paddingBottom: 30,
-    flexDirection: "row",
+  container: {
+    flexDirection: "column",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+    flexDirection: "column",
+    backgroundColor: "#fff",
     justifyContent: "center",
+    alignContent: "center",
   },
-  imageStyle: {
-    borderRadius: 20,
-    width: 300,
-    height: 200,
-  },
-  locationBtn: {
-    marginBottom: 20,
-    marginTop: 200,
-    marginLeft: 20,
-    marginRight: 20,
+  mapScreen: {},
+  locationForm: {
+    flex: 1,
   },
 });

@@ -1,8 +1,8 @@
-import { StyleSheet } from "react-native";
-import { Button, NativeBaseProvider } from "native-base";
+import { StyleSheet, Dimensions } from "react-native";
+import { Button } from "native-base";
 
 // destructor props later
-const YAButton = ({ children, ...props }) => {
+const YAWideButton = ({ children, ...props }) => {
   return (
     <Button mt={props.mt} onPress={props.handlePress} style={styles.button}>
       {children || props.title}
@@ -10,13 +10,15 @@ const YAButton = ({ children, ...props }) => {
   );
 };
 
-export default YAButton;
+export default YAWideButton;
 
 const styles = StyleSheet.create({
   button: {
-    width: "100%",
-    color: "rgba(99, 32, 238, 1)",
     backgroundColor: "rgba(99, 32, 238, 1)",
-    textAlign: "center",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop: 20,
   },
 });
