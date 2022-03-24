@@ -39,9 +39,11 @@ class AuthStore {
     try {
       const response = await instance.get("/authenticate");
       this.users = response.data;
+
       this.usersToInvite = response.data;
       // console.log("fetchusers");
       // console.log(this.users);
+
     } catch (error) {
       console.log("AuthStore -> fetchUsers -> error", error);
     }
@@ -50,7 +52,6 @@ class AuthStore {
   signout = async () => {
     this.user = null;
     this.users = [];
-    // console.log(this.user);
     await AsyncStorage.removeItem("myToken");
   };
 
@@ -71,6 +72,7 @@ class AuthStore {
       }
     }
   };
+
 
   addGuest = async (ghatheringID, newGuest) => {
     try {
@@ -101,6 +103,7 @@ class AuthStore {
     }
   };
 }
+
 
 const authStore = new AuthStore();
 authStore.checkForToken();

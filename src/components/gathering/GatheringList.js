@@ -3,11 +3,25 @@ import React from "react";
 import gatheringStore from "../../stores/gatheringStore";
 import GatheringItem from "./GatheringItem";
 
+import NavBar from "../../navigate/NavBar";
+
+import { VStack } from "native-base";
+import YAListItem from "../shared/YAListItem";
+
+
 const GatheringList = () => {
   const gatheringList = gatheringStore.gathering.map((gathering) => (
     <GatheringItem gathering={gathering} key={gathering._id} />
   ));
-  return <View>{gatheringList}</View>;
+  return (
+
+
+    <VStack>
+      <YAListItem />
+      <YAListItem />
+    </VStack>
+
+  );
 };
 
 export default GatheringList;
