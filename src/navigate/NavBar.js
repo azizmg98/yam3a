@@ -8,7 +8,7 @@ import GatheringList from "../components/gathering/GatheringList";
 import LocationCreate from "../components/location/LocationCreate";
 import LocationList from "../components/location/LocationList";
 import Home from "../components/Home";
-import GuestsList from "../components/users/GuestsList";
+import GuestsList from "../components/users/guest/GuestsList";
 
 const Tab = createBottomTabNavigator();
 

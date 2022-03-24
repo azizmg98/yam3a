@@ -3,8 +3,6 @@ import React from "react";
 import { Input, NativeBaseProvider, Pressable } from "native-base";
 import { useState } from "react/cjs/react.development";
 
-import YAButton from "../shared/YAWideButton";
-
 // importing styling shared components:
 import YAButton from "../shared/YAWideButton";
 import YATitle from "../shared/YATitle";
