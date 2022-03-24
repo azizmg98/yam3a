@@ -1,4 +1,5 @@
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet } from "react-native";
+import { Text } from "native-base";
 import React from "react";
 
 const YATitle = (props) => {
@@ -13,8 +14,8 @@ export default YATitle;
 
 const styles = StyleSheet.create({
   title: {
-    alignSelf: "center",
-    fontSize: 30,
+    alignSelf: "flex-start",
+    // fontSize: 45,
     fontWeight: "bold",
     color: "rgba(69, 69, 69, 1)",
     marginTop: 70,
