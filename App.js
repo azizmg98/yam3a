@@ -6,6 +6,8 @@ import "react-native-gesture-handler";
 import { NativeBaseProvider } from "native-base";
 import { AppRegistry, Platform } from "react-native";
 import { name as appName } from "./app.json";
+import NavBar from "./src/navigate/NavBar";
+
 // import App from "./Screen";
 
 AppRegistry.registerComponent(appName, () => App);
@@ -18,7 +20,8 @@ function App() {
   return (
     <NativeBaseProvider>
       <NavigationContainer>
-        <RootNavigator />
+        {/* <RootNavigator/> */}
+        <NavBar />
       </NavigationContainer>
     </NativeBaseProvider>
   );
