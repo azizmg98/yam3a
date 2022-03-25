@@ -1068,6 +1068,16 @@
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
+"@eva-design/dss@^2.0.0":
+  "integrity" "sha512-Z6rZSodsQHWW1yDuiop1glJU8xKJSdKTPoWWCBsQWXYMNwTAEPgcZV69HNlnerB+T++jwj2jeoBzO24CTc0PmQ=="
+  "resolved" "https://registry.npmjs.org/@eva-design/dss/-/dss-2.1.1.tgz"
+  "version" "2.1.1"
+
+"@eva-design/processor@^2.0.0":
+  "integrity" "sha512-lbxZLm5ARhuk/wxWkaiWhw5XeZ+Xcp1JGCjcZl+S5rUbLppfp4U47jfq861EY27BP1dpQ5PyTVFCbl5eHlRFdg=="
+  "resolved" "https://registry.npmjs.org/@eva-design/processor/-/processor-2.1.1.tgz"
+  "version" "2.1.1"
+
 "@expo/config-plugins@^4.0.2", "@expo/config-plugins@4.0.6":
   "integrity" "sha512-K/KQaw/CU8uLQgk7sFnZC54YGHoGucKFfdjYeZx5ds2eyzbuMAiKzGFcxZ/S+1dVBZ8QHzwowsVBW3kuYhnQ3Q=="
   "resolved" "https://registry.npmjs.org/@expo/config-plugins/-/config-plugins-4.0.6.tgz"
@@ -1796,6 +1806,13 @@
     "sudo-prompt" "^9.0.0"
     "wcwidth" "^1.0.1"
 
+"@react-native-community/datetimepicker@^6.1.0":
+  "integrity" "sha512-RD9KDNDYyJkEEpw0L/pQ5xPptkHp5FXK05ISTaCWo7O2RlTkRKcxen8UVMQ56wjSx/VPT6OpLxI4wrLO6sx/Xg=="
+  "resolved" "https://registry.npmjs.org/@react-native-community/datetimepicker/-/datetimepicker-6.1.0.tgz"
+  "version" "6.1.0"
+  dependencies:
+    "invariant" "^2.2.4"
+
 "@react-native-community/geolocation@^2.0.2":
   "integrity" "sha512-tTNXRCgnhJBu79mulQwzabXRpDqfh/uaDqfHVpvF0nX4NTpolpy6mvTRiFg7eWFPGRArsnZz1EYp6rHfJWGgEA=="
   "resolved" "https://registry.npmjs.org/@react-native-community/geolocation/-/geolocation-2.0.2.tgz"
@@ -2296,6 +2313,17 @@
   "version" "15.0.14"
   dependencies:
     "@types/yargs-parser" "*"
+
+"@ui-kitten/components@^5.1.1":
+  "integrity" "sha512-iB4SE4qW2DjJZzzVSzKMkb182NHjZ4PST4lpFAZmZxv9ZgPcXTc4oQZZrpvk2BvQMUhMBe4g+m87BZ93skcPoQ=="
+  "resolved" "https://registry.npmjs.org/@ui-kitten/components/-/components-5.1.1.tgz"
+  "version" "5.1.1"
+  dependencies:
+    "@eva-design/dss" "^2.0.0"
+    "@eva-design/processor" "^2.0.0"
+    "fecha" "3.0.3"
+    "hoist-non-react-statics" "^3.2.1"
+    "lodash.merge" "^4.6.1"
 
 "@xmldom/xmldom@~0.7.0":
   "integrity" "sha512-V3BIhmY36fXZ1OtVcI9W+FxQqxVLsPKcNjWigIaa81dLC9IolJl5Mt4Cvhmr0flUnjSpTdrbMTSbXqYqV5dT6A=="
@@ -3443,6 +3471,14 @@
   dependencies:
     "fontfaceobserver" "^2.1.0"
 
+"expo-image-picker@^12.0.2":
+  "integrity" "sha512-rAoNGtofV5cg3UN+cdIGDVfbMvbutBX6uNV7jCIEw/WZxZlbW+R7HC8l5lGDFtoLVqcpkHE/6JpAXvESxVSAOA=="
+  "resolved" "https://registry.npmjs.org/expo-image-picker/-/expo-image-picker-12.0.2.tgz"
+  "version" "12.0.2"
+  dependencies:
+    "@expo/config-plugins" "^4.0.2"
+    "uuid" "7.0.2"
+
 "expo-keep-awake@~10.0.2":
   "integrity" "sha512-Ro1lgyKldbFs4mxhWM+goX9sg0S2SRR8FiJJeOvaRzf8xNhrZfWA00Zpr+/3ocCoWQ3eEL+X9UF4PXXHf0KoOg=="
   "resolved" "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-10.0.2.tgz"
@@ -3594,6 +3630,11 @@
     "promise" "^7.1.1"
     "setimmediate" "^1.0.5"
     "ua-parser-js" "^0.7.30"
+
+"fecha@3.0.3":
+  "integrity" "sha512-6LQK/1jud/FZnfEEZJ7y81vw7ge81DNd/XEsX0hgMUjhS+QMljkb1C0czBaP7dMNRVrd5mw/J2J7qI2Nw+TWZw=="
+  "resolved" "https://registry.npmjs.org/fecha/-/fecha-3.0.3.tgz"
+  "version" "3.0.3"
 
 "fill-range@^4.0.0":
   "integrity" "sha1-1USBHUKPmOsGpj3EAtJAPDKMOPc="
@@ -3880,7 +3921,7 @@
   dependencies:
     "source-map" "^0.7.3"
 
-"hoist-non-react-statics@^3.3.0":
+"hoist-non-react-statics@^3.2.1", "hoist-non-react-statics@^3.3.0":
   "integrity" "sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw=="
   "resolved" "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz"
   "version" "3.3.2"
@@ -4486,7 +4527,7 @@
   "resolved" "https://registry.npmjs.org/lodash.isstring/-/lodash.isstring-4.0.1.tgz"
   "version" "4.0.1"
 
-"lodash.merge@^4.6.2":
+"lodash.merge@^4.6.1", "lodash.merge@^4.6.2":
   "integrity" "sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ=="
   "resolved" "https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz"
   "version" "4.6.2"
@@ -5647,7 +5688,7 @@
     "react-freeze" "^1.0.0"
     "warn-once" "^0.1.0"
 
-"react-native-svg@12.1.0", "react-native-svg@12.1.1":
+"react-native-svg@*", "react-native-svg@12.1.0", "react-native-svg@12.1.1":
   "integrity" "sha512-NIAJ8jCnXGCqGWXkkJ1GTzO4a3Md5at5sagYV8Vh4MXYnL4z5Rh428Wahjhh+LIjx40EE5xM5YtwyJBqOIba2Q=="
   "resolved" "https://registry.npmjs.org/react-native-svg/-/react-native-svg-12.1.1.tgz"
   "version" "12.1.1"
@@ -6586,6 +6627,11 @@
   "integrity" "sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg=="
   "resolved" "https://registry.npmjs.org/uuid/-/uuid-7.0.3.tgz"
   "version" "7.0.3"
+
+"uuid@7.0.2":
+  "integrity" "sha512-vy9V/+pKG+5ZTYKf+VcphF5Oc6EFiu3W8Nv3P3zIh0EqVI80ZxOzuPfe9EHjkFNvf8+xuTHVeei4Drydlx4zjw=="
+  "resolved" "https://registry.npmjs.org/uuid/-/uuid-7.0.2.tgz"
+  "version" "7.0.2"
 
 "vary@~1.1.2":
   "integrity" "sha1-IpnwLG3tMNSllhsLn3RSShj2NPw="

@@ -4,7 +4,7 @@ import GuestItem from "./GuestItem";
 import authStore from "../../../stores/authStore";
 // import { Avatar } from "native-base";
 
-const GuestList = () => {
+const GuestList = ({ gatheringId }) => {
   const guestList = authStore.usersToInvite.map((user) => (
     <GuestItem key={user._id} user={user} />
   ));

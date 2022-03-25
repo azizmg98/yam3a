@@ -43,7 +43,6 @@ class AuthStore {
       this.usersToInvite = response.data;
       // console.log("fetchusers");
       // console.log(this.users);
-
     } catch (error) {
       console.log("AuthStore -> fetchUsers -> error", error);
     }
@@ -73,11 +72,10 @@ class AuthStore {
     }
   };
 
-
-  addGuest = async (ghatheringID, newGuest) => {
+  addGuest = async (gatheringID, newGuest) => {
     try {
       const response = await instance.post(
-        `/gatherings/${ghatheringID}/guest`,
+        `/gatherings/623acf478075e974f7dc4752/guests`,
         newGuest
       );
 
@@ -103,7 +101,6 @@ class AuthStore {
     }
   };
 }
-
 
 const authStore = new AuthStore();
 authStore.checkForToken();

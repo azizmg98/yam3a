@@ -4,7 +4,8 @@ import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import BottomSheet from "./BottomSheet";
 import { Image } from "native-base";
-
+import GuestsList from "../users/guest/GuestsList";
+import gatheringStore from "../../stores/gatheringStore";
 const GatheringDetail = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>

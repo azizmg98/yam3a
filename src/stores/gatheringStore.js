@@ -16,6 +16,20 @@ class GatheringStore {
       console.error(error);
     }
   };
+
+  gatheringCreate = async (userID, newData) => {
+    try {
+      console.log(newData);
+
+      const newGathering = await instance.post(
+        `/api/user/${userID}/gathering`,
+        newData
+      );
+      await this.fetchTrip();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 const gatheringStore = new GatheringStore();

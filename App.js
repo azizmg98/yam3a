@@ -5,17 +5,17 @@ import RootNavigator from "./src/navigate";
 import "react-native-gesture-handler";
 import { NativeBaseProvider } from "native-base";
 import { AppRegistry, Platform } from "react-native";
-import { name as appName } from "./app.json";
+import { name as yam3a } from "./app.json";
 import NavBar from "./src/navigate/NavBar";
 
 // import App from "./Screen";
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent("yam3a", () => App);
 
 function App() {
   if (Platform.OS === "web") {
     const rootTag = document.getElementById("root");
-    AppRegistry.runApplication(appName, { rootTag });
+    AppRegistry.runApplication("yam3a", { rootTag });
   }
   return (
     <NativeBaseProvider>
