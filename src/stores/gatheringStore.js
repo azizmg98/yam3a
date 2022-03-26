@@ -23,7 +23,7 @@ class GatheringStore {
     try {
       const res = await instance.get("gatherings/host");
       this.hostedGatherings = res.data;
-      console.log(this.hostedGatherings);
+      console.log("hosted gatherings", this.hostedGatherings);
     } catch (error) {
       console.error(error);
     }
@@ -31,6 +31,5 @@ class GatheringStore {
 }
 
 const gatheringStore = new GatheringStore();
-gatheringStore.fetchHostGathering();
 
 export default gatheringStore;

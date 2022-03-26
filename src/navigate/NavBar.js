@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator();
 
 const NavBar = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator initialRouteName="Signin">
       <Tab.Screen name="GatheringList" component={GatheringList} />
       <Tab.Screen name="LocationCreate" component={LocationCreate} />
       <Tab.Screen name="LocationList" component={LocationList} />

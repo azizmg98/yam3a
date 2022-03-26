@@ -29,7 +29,6 @@ const Signin = ({ navigation }) => {
     authStore.signin(user, navigation);
   };
 
-  console.log(user);
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <NativeBaseProvider>

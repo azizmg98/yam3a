@@ -2,6 +2,7 @@ import { instance } from "./instance";
 import { makeAutoObservable } from "mobx";
 import decode from "jwt-decode";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import gatheringStore from "./gatheringStore";
 
 class AuthStore {
   user = null;
@@ -17,8 +18,7 @@ class AuthStore {
       const res = await instance.post("/authenticate/signin", user);
       this.setUser(res.data.token);
       this.fetchUsers();
-      console.log(this.user);
-      // navigation.navigate("GuestList");
+      navigation.navigate("GatheringList");
     } catch (error) {
       if (error.message == "Request failed with status code 401") {
         alert("username or password is wrong");
@@ -59,6 +59,8 @@ class AuthStore {
     await AsyncStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.user = decode(token);
+    gatheringStore.fetchHostGathering();
+    console.log(this.user);
   };
 
   checkForToken = async () => {
@@ -105,6 +107,6 @@ class AuthStore {
 }
 
 const authStore = new AuthStore();
-authStore.checkForToken();
+authStore.user ? authStore.checkForToken() : console.log("no user");
 
 export default authStore;
