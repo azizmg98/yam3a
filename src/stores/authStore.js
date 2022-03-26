@@ -17,7 +17,8 @@ class AuthStore {
       const res = await instance.post("/authenticate/signin", user);
       this.setUser(res.data.token);
       this.fetchUsers();
-      navigation.navigate("GuestList");
+      console.log(this.user);
+      // navigation.navigate("GuestList");
     } catch (error) {
       if (error.message == "Request failed with status code 401") {
         alert("username or password is wrong");
@@ -43,7 +44,6 @@ class AuthStore {
       this.usersToInvite = response.data;
       // console.log("fetchusers");
       // console.log(this.users);
-
     } catch (error) {
       console.log("AuthStore -> fetchUsers -> error", error);
     }
@@ -65,6 +65,7 @@ class AuthStore {
     const token = await AsyncStorage.getItem("myToken");
     if (token) {
       const decodedToken = decode(token);
+      console.log(this.user);
       if (Date.now() < +decodedToken.exp) {
         this.setUser(token);
       } else {
@@ -72,7 +73,6 @@ class AuthStore {
       }
     }
   };
-
 
   addGuest = async (ghatheringID, newGuest) => {
     try {
@@ -103,7 +103,6 @@ class AuthStore {
     }
   };
 }
-
 
 const authStore = new AuthStore();
 authStore.checkForToken();

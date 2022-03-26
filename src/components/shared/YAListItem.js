@@ -15,7 +15,7 @@ import YAText from "./YAText";
 import YAImageS from "./YAImageS";
 import YAAvatar from "./YAAvatar";
 
-const YAListItem = () => {
+const YAListItem = (...props) => {
   return (
     <Box
       shadow="3"
@@ -33,7 +33,7 @@ const YAListItem = () => {
         <YAImageS m="4" />
         <Center>
           <VStack>
-            <YATitle title="Coded Zwara" fontSize="25" />
+            <YATitle title={props.title} fontSize="25" />
             <YAText
               title="Friday, March 25"
               fontSize="14"

@@ -9,6 +9,7 @@ import LocationCreate from "../components/location/LocationCreate";
 import LocationList from "../components/location/LocationList";
 import Home from "../components/Home";
 import GuestsList from "../components/users/guest/GuestsList";
+import Signin from "../components/auth/Signin";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,7 +19,7 @@ const NavBar = () => {
       <Tab.Screen name="GatheringList" component={GatheringList} />
       <Tab.Screen name="LocationCreate" component={LocationCreate} />
       <Tab.Screen name="LocationList" component={LocationList} />
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Signin" component={Signin} />
       <Tab.Screen name="GuestsList" component={GuestsList} />
     </Tab.Navigator>
   );

@@ -12,7 +12,7 @@ class GatheringStore {
   //? remove gatherings since we don't need them
   fetchGathering = async () => {
     try {
-      const res = await instance.get("gatherings");
+      const res = await instance.get("/gatherings");
       this.gathering = res.data;
     } catch (error) {
       console.error(error);
@@ -31,6 +31,6 @@ class GatheringStore {
 }
 
 const gatheringStore = new GatheringStore();
-gatheringStore.fetchGathering();
 gatheringStore.fetchHostGathering();
+
 export default gatheringStore;
