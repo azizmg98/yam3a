@@ -20,9 +20,10 @@ import YATitle from "./YATitle";
 
 // importing icons:
 import { Ionicons, AntDesign } from "@expo/vector-icons";
-import { color } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
+import gatheringStore from "../../stores/gatheringStore";
+// import { color } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
-const YAListItem = (...props) => {
+const YAHostedCard = ({ route }) => {
   return (
     <View style={styles.container}>
       <Box style={styles.box}>
@@ -31,7 +32,7 @@ const YAListItem = (...props) => {
             <YAImageS marginRight={3} />
           </VStack>
           <VStack>
-            <YATitle title="CODED Zwara" />
+            <YATitle title="{gathering}" />
             <HStack>
               <VStack>
                 <AntDesign name="calendar" size={21} color="#9A9797" />
@@ -50,14 +51,7 @@ const YAListItem = (...props) => {
             </HStack>
             <HStack style={styles.locationRow}>
               <VStack>
-                <Ionicons
-                  name="location-outline"
-                  size={22}
-                  color="#9A9797"
-                  onPress={() => {
-                    navigation.navigate("LocationList");
-                  }}
-                />
+                <Ionicons name="location-outline" size={22} color="#9A9797" />
               </VStack>
               <VStack>
                 <Text style={styles.text}>
@@ -84,18 +78,16 @@ const YAListItem = (...props) => {
   );
 };
 
-export default YAListItem;
+export default YAHostedCard;
 
 const styles = StyleSheet.create({
   container: {
     width: Dimensions.get("window").width,
-    marginTop: 20,
   },
   box: {
     width: Dimensions.get("window").width - 30,
     shadowColor: "black",
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
+    shadowRadius: 2,
     backgroundColor: "white",
     borderRadius: 12,
     borderColor: "black",

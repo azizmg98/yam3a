@@ -1,27 +1,21 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React from "react";
+import { Box } from "native-base";
+import LocationListIcon from "../components/shared/LocationListIcon";
+import GatheringListIcon from "../components/shared/GatheringListIcon";
+import CreateGatheringIcon from "../components/shared/CreateGatheringIcon";
 // importing libraries:
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-// importing Screens:
-import GatheringList from "../components/gathering/GatheringList";
-import LocationCreate from "../components/location/LocationCreate";
-import LocationList from "../components/location/LocationList";
-import Home from "../components/Home";
-import GuestsList from "../components/users/guest/GuestsList";
-import Signin from "../components/auth/Signin";
 
 const Tab = createBottomTabNavigator();
 
 const NavBar = () => {
   return (
-    <Tab.Navigator initialRouteName="Signin">
-      <Tab.Screen name="GatheringList" component={GatheringList} />
-      <Tab.Screen name="LocationCreate" component={LocationCreate} />
-      <Tab.Screen name="LocationList" component={LocationList} />
-      <Tab.Screen name="Signin" component={Signin} />
-      <Tab.Screen name="GuestsList" component={GuestsList} />
-    </Tab.Navigator>
+    <Box style={styles.navBar}>
+      <LocationListIcon />
+      <CreateGatheringIcon />
+      <GatheringListIcon />
+    </Box>
   );
 };
 
@@ -29,7 +23,21 @@ export default NavBar;
 
 const styles = StyleSheet.create({
   navBar: {
-    backgroundColor: "#6320EE",
+    backgroundColor: "#D2DAD2",
+    shadowColor: "lightgrey",
+    shadowOpacity: 8,
+    shadowRadius: 20,
+    marginBottom: 30,
+    borderRadius: 15,
+    paddingLeft: 30,
+    paddingRight: 30,
+    paddingTop: 10,
+    paddingBottom: 10,
+    position: "absolute",
+    bottom: 0,
+    alignSelf: "center",
+    width: Dimensions.get("window").width - 40,
     flexDirection: "row",
+    justifyContent: "space-between",
   },
 });

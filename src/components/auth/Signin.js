@@ -32,7 +32,7 @@ const Signin = ({ navigation }) => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <NativeBaseProvider>
-        <Center w="100%">
+        <Center w="100%" style={{ backgroundColor: "white", height: "100%" }}>
           {/* <Image
           source={require("../../assets/istockphoto.jpeg")}
           style={styles.image}
@@ -49,7 +49,7 @@ const Signin = ({ navigation }) => {
                 color: "warmGray.50",
               }}
             >
-              Welcome To Nomadic
+              Welcome To Yam3a
             </Heading>
             <Heading
               mt="1"
@@ -68,6 +68,7 @@ const Signin = ({ navigation }) => {
               <FormControl>
                 <FormControl.Label>Username</FormControl.Label>
                 <Input
+                  autoCapitalize="none"
                   onChangeText={(username) => setUser({ ...user, username })}
                 />
               </FormControl>

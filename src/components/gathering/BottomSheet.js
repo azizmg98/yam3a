@@ -11,11 +11,15 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import YATitle from "../shared/YATitle";
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import GatheringList from "./GatheringList";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT;
 
 const BottomSheet = () => {
+  const navigation = useNavigation();
   const translateY = useSharedValue(0);
   const context = useSharedValue({ y: 0 });
   const gesture = Gesture.Pan()
@@ -40,6 +44,14 @@ const BottomSheet = () => {
   return (
     <GestureDetector gesture={gesture}>
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
+        <Ionicons
+          name="md-caret-back-circle-sharp"
+          style={styles.backIcon}
+          size={50}
+          color="white"
+          onPress={() => navigation.navigate("GatheringList")}
+        />
+
         <View style={styles.line}></View>
         <YATitle title="Gathering Title" />
       </Animated.View>
@@ -65,5 +77,12 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginVertical: 15,
     borderRadius: 20,
+  },
+  backIcon: {
+    position: "absolute",
+    top: -260,
+    marginTop: 20,
+    marginLeft: 15,
+    opacity: 0.5,
   },
 });
