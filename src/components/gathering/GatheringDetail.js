@@ -4,12 +4,14 @@ import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import BottomSheet from "./BottomSheet";
 import { Image } from "native-base";
+import { Ionicons } from "@expo/vector-icons";
 
 const GatheringDetail = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={styles.container}>
         <StatusBar style="light" />
+
         <Image
           style={styles.yam3aImage}
           source={{
@@ -35,5 +37,10 @@ const styles = StyleSheet.create({
   yam3aImage: {
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height / 2.5,
+  },
+  backIcon: {
+    position: "absolute",
+    top: 20,
+    marginTop: 20,
   },
 });

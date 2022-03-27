@@ -1,29 +1,38 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React from "react";
 import gatheringStore from "../../stores/gatheringStore";
 import GatheringItem from "./GatheringItem";
 
 import NavBar from "../../navigate/NavBar";
 
-import { VStack } from "native-base";
+import { ScrollView, VStack } from "native-base";
 import YAListItem from "../shared/YAListItem";
 
-
 const GatheringList = () => {
-  const gatheringList = gatheringStore.gathering.map((gathering) => (
-    <GatheringItem gathering={gathering} key={gathering._id} />
-  ));
+  // const gatheringList = gatheringStore.gathering.map((gathering) => (
+  //   <GatheringItem gathering={gathering} key={gathering._id} />
+  // ));
   return (
-
-
-    <VStack>
-      <YAListItem />
-      <YAListItem />
+    <VStack style={styles.list}>
+      <ScrollView>
+        <YAListItem />
+        <YAListItem />
+        <YAListItem />
+        <YAListItem />
+        <YAListItem />
+        <YAListItem />
+        <YAListItem />
+        <YAListItem />
+      </ScrollView>
     </VStack>
-
   );
 };
 
 export default GatheringList;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  list: {
+    backgroundColor: "#F4F6F4",
+    height: Dimensions.get("window").height,
+  },
+});

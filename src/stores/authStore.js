@@ -17,7 +17,8 @@ class AuthStore {
       const res = await instance.post("/authenticate/signin", user);
       this.setUser(res.data.token);
       this.fetchUsers();
-      navigation.navigate("GuestList");
+      console.log(user);
+      navigation.navigate("GatheringList");
     } catch (error) {
       if (error.message == "Request failed with status code 401") {
         alert("username or password is wrong");
@@ -29,50 +30,54 @@ class AuthStore {
   signup = async (userData, navigation) => {
     try {
       const res = await instance.post("/authenticate/signup", userData);
-      this.setUser(res.data.token);
-      navigation.navigate("Home");
+      await this.setUser(res.data.token);
+      navigation.navigate("GatheringList");
     } catch (error) {
       console.log(error);
     }
   };
+
   fetchUsers = async () => {
     try {
       const response = await instance.get("/authenticate");
       this.users = response.data;
-
       this.usersToInvite = response.data;
       // console.log("fetchusers");
       // console.log(this.users);
-
     } catch (error) {
       console.log("AuthStore -> fetchUsers -> error", error);
     }
   };
 
   signout = async () => {
-    this.user = null;
-    this.users = [];
-    await AsyncStorage.removeItem("myToken");
+    try {
+      this.user = null;
+      this.users = [];
+      await AsyncStorage.removeItem("myToken");
+    } catch (error) {}
   };
 
   setUser = async (token) => {
-    await AsyncStorage.setItem("myToken", token);
-    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-    this.user = decode(token);
+    try {
+      await AsyncStorage.setItem("myToken", token);
+      instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+      this.user = decode(token);
+    } catch (error) {}
   };
 
   checkForToken = async () => {
-    const token = await AsyncStorage.getItem("myToken");
-    if (token) {
-      const decodedToken = decode(token);
-      if (Date.now() < +decodedToken.exp) {
-        this.setUser(token);
-      } else {
-        this.signout();
+    try {
+      const token = await AsyncStorage.getItem("myToken");
+      if (token) {
+        const decodedToken = decode(token);
+        if (Date.now() < +decodedToken.exp) {
+          await this.setUser(token);
+        } else {
+          this.signout();
+        }
       }
-    }
+    } catch (error) {}
   };
-
 
   addGuest = async (ghatheringID, newGuest) => {
     try {
@@ -103,7 +108,6 @@ class AuthStore {
     }
   };
 }
-
 
 const authStore = new AuthStore();
 authStore.checkForToken();

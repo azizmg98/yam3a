@@ -15,10 +15,9 @@ export default YATitle;
 const styles = StyleSheet.create({
   title: {
     alignSelf: "flex-start",
-    // fontSize: 45,
+    fontSize: 20,
     fontWeight: "bold",
     color: "rgba(69, 69, 69, 1)",
-    marginTop: 70,
-    paddingBottom: 20,
+    marginBottom: 7,
   },
 });

@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
-import { NativeBaseProvider, ScrollView } from "native-base";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { NativeBaseProvider, ScrollView, VStack } from "native-base";
 import React from "react";
 
 import locationStore from "../../stores/locationStore";
@@ -12,12 +12,17 @@ const LocationList = () => {
   ));
 
   return (
-    <NativeBaseProvider>
+    <VStack style={styles.list}>
       <ScrollView>{locationList}</ScrollView>
-    </NativeBaseProvider>
+    </VStack>
   );
 };
 
 export default observer(LocationList);
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  list: {
+    backgroundColor: "#F4F6F4",
+    height: Dimensions.get("window").height,
+  },
+});
