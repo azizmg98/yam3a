@@ -10,20 +10,22 @@ import LocationList from "../components/location/LocationList";
 import user from "../stores/authStore";
 import GuestsList from "../components/users/guest/GuestsList";
 
-import GuestsList from "../components/users/GuestsList";
 import GatheringDetail from "../components/gathering/GatheringDetail";
-
+import YAAvatar from "../components/shared/YAAvatar";
+import YAHostProfileIcon from "../components/shared/YAHostProfileIcon";
+import UserProfile from "../components/users/UserProfile";
+import AddLocationIcon from "../components/shared/AddLocationIcon";
 
 const { Navigator, Screen } = createStackNavigator();
 
 const RootNavigator = () => {
   return (
     // screenOptions renders options for all screens
-    <Navigator initialRouteName="GatheringList" screenOptions={{}}>
+    <Navigator initialRouteName="Signin" screenOptions={{}}>
       <Screen
         name="Signup"
         component={Signup}
-        options={{ headerShown: false }}
+        // options={{ headerShown: false }}
       />
       <Screen
         name="Signin"
@@ -33,24 +35,37 @@ const RootNavigator = () => {
       <Screen
         name="LocationCreate"
         component={LocationCreate}
-        options={{ headerShown: false }}
+        options={{ headerTitle: "Add New Location" }}
       />
       <Screen
         name="GatheringList"
-        options={{ headerTitle: "Hosted Gatherings", headerLeft: false }}
+        options={{
+          headerTitle: "Hosted Gatherings",
+          headerLeft: () => <YAHostProfileIcon />,
+          headerRight: () => <Signout />,
+        }}
         component={GatheringList}
       />
 
       <Screen
         name="LocationList"
-        options={{ headerTitle: "My Locations" }}
+        options={{
+          headerTitle: "My Locations",
+          headerLeft: () => <YAHostProfileIcon />,
+          headerRight: () => <AddLocationIcon />,
+          gestureDirection: "horizontal-inverted",
+        }}
         component={LocationList}
       />
 
       <Screen
-        name="Home"
-        component={Home}
-        options={{ headerRight: () => <Signout /> }}
+        name="UserProfile"
+        options={{
+          headerTitle: "My Profile",
+          headerLeft: false,
+          headerShown: false,
+        }}
+        component={UserProfile}
       />
 
       <Screen
@@ -59,11 +74,6 @@ const RootNavigator = () => {
         options={{ headerRight: () => <Signout /> }}
       />
 
-      <Screen
-        name="GatheringList"
-        component={GatheringList}
-        options={{ headerRight: () => <Signout /> }}
-      />
       <Screen
         name="GatheringDetail"
         component={GatheringDetail}

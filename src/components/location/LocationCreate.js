@@ -1,38 +1,79 @@
 import { StyleSheet, Text, View, Dimensions } from "react-native";
-import React from "react";
-import { Input, NativeBaseProvider, Pressable } from "native-base";
-import { useState } from "react/cjs/react.development";
-
-import YAButton from "../shared/YAWideButton";
+import React, { useState } from "react";
+import { Input, NativeBaseProvider } from "native-base";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import MapView, { Marker, Callout } from "react-native-maps";
 
 // importing styling shared components:
-import YAButton from "../shared/YAWideButton";
-import YATitle from "../shared/YATitle";
-// importing Stores:
+import YAWideButton from "../shared/YAWideButton";
 
+// importing Stores:
 import locationStore from "../../stores/locationStore";
-// importing the map:
-import MapScreen from "./MapScreen";
+// import Geolocation from "@react-native-community/geolocation";
+
+// Geolocation.setRNConfiguration(config);
 
 const LocationCreate = () => {
-  const [location, setLocation] = useState();
+  const [address, setAddress] = useState();
+  const [pin, setPin] = useState({ latitude: 29.378586, longitude: 47.990341 });
 
   const handleSubmit = () => {
-    console.log("inside handle submit");
-    console.log(location);
-    locationStore.addLocation(location);
+    console.log("inside Location Create");
+    console.log(address, pin);
+    locationStore.addLocation(address, pin);
   };
 
   return (
     <NativeBaseProvider>
-      <YATitle title="Add New Location" />
-      <View style={styles.container}>
-        <MapScreen style={styles.mapScreen} />
+      <View style={styles.container1}>
+        <MapView
+          style={styles.map}
+          initialRegion={{
+            latitude: 29.378586,
+            longitude: 47.990341,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+          provider="google"
+        >
+          <View style={styles.searchContainer}>
+            <GooglePlacesAutocomplete
+              placeholder="Search"
+              fetchDetails={true}
+              GooglePlacesSearchQuery={{
+                rankby: "distance",
+              }}
+              onPress={(data, details = null) => {
+                console.log(data, details);
+              }}
+              query={{
+                key: `AIzaSyBymxkNtegpiXRziSZU85FfBWCcYi5xY_Y`,
+                language: "en",
+              }}
+            />
+          </View>
+          <Marker
+            coordinate={pin}
+            draggable={true}
+            onDragStart={(e) => {
+              console.log("Drag Start", pin);
+            }}
+            onDragEnd={(e) => (
+              console.log("Drag End", e.nativeEvent.coordinate),
+              setPin(e.nativeEvent.coordinate)
+            )}
+          >
+            <Callout>
+              <Text>You Are Here</Text>
+            </Callout>
+          </Marker>
+        </MapView>
+      </View>
+      <View style={styles.container2}>
         <View style={styles.locationForm}>
           <Text
             style={{
               marginBottom: 7,
-              marginTop: 20,
               marginRight: 20,
               marginLeft: 20,
             }}
@@ -48,7 +89,7 @@ const LocationCreate = () => {
           >
             <Input
               autoCorrect={false}
-              onChangeText={(title) => setLocation({ ...location, title })}
+              onChangeText={(title) => setAddress({ ...address, title })}
             ></Input>
           </View>
           <Text
@@ -70,12 +111,12 @@ const LocationCreate = () => {
           >
             <Input
               autoCorrect={false}
-              onChangeText={(address) => setLocation({ ...location, address })}
+              onChangeText={(add) => setAddress({ ...address, add })}
             ></Input>
           </View>
 
           <View>
-            <YAButton title="Add Location" handlePress={handleSubmit} />
+            <YAWideButton title="Add Location" handlePress={handleSubmit} />
           </View>
         </View>
       </View>
@@ -86,17 +127,37 @@ const LocationCreate = () => {
 export default LocationCreate;
 
 const styles = StyleSheet.create({
-  container: {
+  container1: {
+    marginTop: 20,
+    backgroundColor: "#F4F6F4",
+    alignItems: "center",
+  },
+  map: {
+    width: Dimensions.get("window").width / 1.12,
+    height: Dimensions.get("window").height / 2.5,
+    borderRadius: 20,
+  },
+  searchContainer: {
+    marginTop: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    width: 300,
+  },
+  container2: {
+    marginTop: 30,
     flexDirection: "column",
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
     flexDirection: "column",
-    backgroundColor: "#fff",
+    backgroundColor: "#F4F6F4",
     justifyContent: "center",
     alignContent: "center",
   },
-  mapScreen: {},
   locationForm: {
     flex: 1,
+  },
+  page: {
+    backgroundColor: "#F4F6F4",
+    height: Dimensions.get("window").height,
   },
 });

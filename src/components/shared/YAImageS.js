@@ -10,12 +10,15 @@ const YAImageS = (props) => {
       }}
       alt="Alternate Text"
       size="md"
-      resizeMode="cover"
-      borderRadius="7"
+      style={styles.gatheringImage}
     />
   );
 };
 
 export default YAImageS;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  gatheringImage: {
+    borderRadius: 7,
+  },
+});

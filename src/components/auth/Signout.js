@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Alert } from "react-native";
 import React from "react";
 import { NativeBaseProvider, Button, VStack } from "native-base";
+import { Entypo } from "@expo/vector-icons";
 
 // import styles from "./shared/Styles";
 // import { FontAwesome } from "@expo/vector-icons";
@@ -19,29 +20,21 @@ const Signout = () => {
     //not signedin
   };
   return (
-    <NativeBaseProvider>
-      <VStack>
-        <Button
-          name="sign-out"
-          width={24}
-          height={10}
-          color="black"
-          style={styles.button}
-          onPress={handleSignout}
-        >
-          Sign Out
-        </Button>
-      </VStack>
-    </NativeBaseProvider>
+    <View style={styles.logoutIcon}>
+      <Entypo
+        name="log-out"
+        size={24}
+        color="#6E876E"
+        onPress={handleSignout}
+      />
+    </View>
   );
 };
 
 export default observer(Signout);
 
 const styles = StyleSheet.create({
-  button: {
-    marginLeft: 30,
-    marginRight: 9,
-    backgroundColor: "#6320EE",
+  logoutIcon: {
+    marginRight: 15,
   },
 });
