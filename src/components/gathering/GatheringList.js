@@ -15,16 +15,7 @@ const GatheringList = () => {
   ));
   return (
     <VStack style={styles.list}>
-      <ScrollView>
-        <YAListItem />
-        <YAListItem />
-        <YAListItem />
-        <YAListItem />
-        <YAListItem />
-        <YAListItem />
-        <YAListItem />
-        <YAListItem />
-      </ScrollView>
+      <ScrollView>{gatheringList}</ScrollView>
     </VStack>
   );
 };

@@ -6,7 +6,7 @@ const YAImageS = (props) => {
     <Image
       {...props}
       source={{
-        uri: "https://wallpaperaccess.com/full/317501.jpg",
+        uri: props.uri || "https://wallpaperaccess.com/full/317501.jpg",
       }}
       alt="Alternate Text"
       size="md"

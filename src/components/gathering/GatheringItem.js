@@ -20,33 +20,13 @@ import YATitle from "../shared/YATitle";
 
 const GatheringItem = ({ gathering }) => {
   return (
-    <Box
-      shadow="3"
-      rounded="2xl"
-      width={"90%"}
-      height="115"
-      alignSelf="center"
-      _light={{ bg: "coolGray.50" }}
-      _dark={{ bg: "gray.700" }}
-      position="relative"
-      //   p="16"
-      m="2"
-    >
-      <HStack>
-        <YAImageS m="4" />
-        <Center>
-          <VStack>
-            <YATitle title={gathering.title} fontSize="25" />
-            <YAText
-              title="Friday, March 25"
-              fontSize="14"
-              color="rgba(154, 151, 151, 1)"
-            />
-            <YAAvatar size="sm" />
-          </VStack>
-        </Center>
-      </HStack>
-    </Box>
+    <YAListItem
+      uri={gathering.image}
+      title={gathering.title}
+      date={gathering.date}
+      time={gathering.time}
+      location={gathering.location.address}
+    />
   );
 };
 
