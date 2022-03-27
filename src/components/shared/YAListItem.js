@@ -11,6 +11,7 @@ import {
   VStack,
   Button,
 } from "native-base";
+import { baseURL } from "../../stores/instance";
 
 // importing shared components:
 import YAText from "./YAText";
@@ -28,7 +29,8 @@ const YAListItem = (props) => {
       <Box style={styles.box}>
         <HStack style={styles.topRow}>
           <VStack>
-            <YAImageS uri={props.uri} marginRight={3} />
+            {/* make image display default image if image path is undefined */}
+            <YAImageS uri={baseURL + props.uri} marginRight={3} />
           </VStack>
           <VStack>
             <YATitle title={props.title} />
