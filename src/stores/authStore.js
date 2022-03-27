@@ -55,7 +55,9 @@ class AuthStore {
       this.user = null;
       this.users = [];
       await AsyncStorage.removeItem("myToken");
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   setUser = async (token) => {
@@ -118,6 +120,6 @@ class AuthStore {
 }
 
 const authStore = new AuthStore();
-authStore.user ? authStore.checkForToken() : console.log("no user");
+authStore.checkForToken();
 
 export default authStore;
