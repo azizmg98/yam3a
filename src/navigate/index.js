@@ -15,23 +15,25 @@ import YAAvatar from "../components/shared/YAAvatar";
 import YAHostProfileIcon from "../components/shared/YAHostProfileIcon";
 import UserProfile from "../components/users/UserProfile";
 import AddLocationIcon from "../components/shared/AddLocationIcon";
+import GatheringCreate from "../components/gathering/GatheringCreate";
 
 const { Navigator, Screen } = createStackNavigator();
 
 const RootNavigator = () => {
   return (
     // screenOptions renders options for all screens
-    <Navigator initialRouteName="Signin" screenOptions={{}}>
-      <Screen
-        name="Signup"
-        component={Signup}
-        // options={{ headerShown: false }}
-      />
+    <Navigator screenOptions={{}}>
       <Screen
         name="Signin"
         component={Signin}
         options={{ headerShown: false }}
       />
+      <Screen
+        name="Signup"
+        component={Signup}
+        // options={{ headerShown: false }}
+      />
+
       <Screen
         name="LocationCreate"
         component={LocationCreate}
@@ -40,7 +42,7 @@ const RootNavigator = () => {
       <Screen
         name="GatheringList"
         options={{
-          headerTitle: "Hosted Gatherings",
+          headerTitle: "Invitations",
           headerLeft: () => <YAHostProfileIcon />,
           headerRight: () => <Signout />,
         }}
@@ -78,6 +80,14 @@ const RootNavigator = () => {
         name="GatheringDetail"
         component={GatheringDetail}
         options={{ headerShown: false }}
+      />
+
+      <Screen
+        name="GatheringCreate"
+        options={{
+          headerShown: false,
+        }}
+        component={GatheringCreate}
       />
     </Navigator>
   );

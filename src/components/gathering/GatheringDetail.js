@@ -6,12 +6,18 @@ import BottomSheet from "./BottomSheet";
 import { Image } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 
-const GatheringDetail = () => {
+const GatheringDetail = ({ navigation }) => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={styles.container}>
         <StatusBar style="light" />
-
+        <Ionicons
+          name="md-caret-back-circle-sharp"
+          style={styles.backIcon}
+          size={50}
+          color="white"
+          onPress={() => navigation.navigate("GatheringList")}
+        />
         <Image
           style={styles.yam3aImage}
           source={{
@@ -37,10 +43,12 @@ const styles = StyleSheet.create({
   yam3aImage: {
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height / 2.5,
+    zIndex: -1,
   },
   backIcon: {
     position: "absolute",
-    top: 20,
-    marginTop: 20,
+    left: 20,
+    marginTop: 40,
+    opacity: 0.5,
   },
 });
