@@ -6,20 +6,28 @@ import GatheringListIcon from "../components/shared/GatheringListIcon";
 import CreateGatheringIcon from "../components/shared/CreateGatheringIcon";
 // importing libraries:
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import authStore from "../stores/authStore";
+import { observer } from "mobx-react";
+import AddGuestsIcon from "../components/shared/AddGuestsIcon";
 
 const Tab = createBottomTabNavigator();
 
 const NavBar = () => {
   return (
-    <Box style={styles.navBar}>
-      <LocationListIcon />
-      <CreateGatheringIcon />
-      <GatheringListIcon />
-    </Box>
+    <>
+      {authStore.user && (
+        <Box style={styles.navBar}>
+          <LocationListIcon />
+          <CreateGatheringIcon />
+          <GatheringListIcon />
+          <AddGuestsIcon />
+        </Box>
+      )}
+    </>
   );
 };
 
-export default NavBar;
+export default observer(NavBar);
 
 const styles = StyleSheet.create({
   navBar: {

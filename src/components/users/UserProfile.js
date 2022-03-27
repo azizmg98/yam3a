@@ -72,7 +72,7 @@ const UserProfile = ({ navigation }) => {
           </View>
           <HStack style={styles.actionRow}>
             <Button variant="ghost" _text={{ color: "#FF0000" }}>
-              Delete
+              Cancel
             </Button>
           </HStack>
         </Box>

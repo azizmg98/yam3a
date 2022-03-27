@@ -13,7 +13,10 @@ const LocationList = () => {
 
   return (
     <VStack style={styles.list}>
-      <ScrollView>{locationList}</ScrollView>
+      {/* <ScrollView>{locationList}</ScrollView> */}
+      <ScrollView>
+        <LocationItem />
+      </ScrollView>
     </VStack>
   );
 };
