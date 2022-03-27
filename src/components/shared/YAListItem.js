@@ -22,29 +22,29 @@ import YATitle from "./YATitle";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 import { color } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
-const YAListItem = (...props) => {
+const YAListItem = (props) => {
   return (
     <View style={styles.container}>
       <Box style={styles.box}>
         <HStack style={styles.topRow}>
           <VStack>
-            <YAImageS marginRight={3} />
+            <YAImageS uri={props.uri} marginRight={3} />
           </VStack>
           <VStack>
-            <YATitle title="CODED Zwara" />
+            <YATitle title={props.title} />
             <HStack>
               <VStack>
                 <AntDesign name="calendar" size={21} color="#9A9797" />
               </VStack>
               <VStack>
-                <YAText style={styles.text} title="Friday, March 25" />
+                <YAText style={styles.text} title={props.date} />
               </VStack>
               <VStack>
                 <Ionicons name="time-outline" size={22} color="#9A9797" />
               </VStack>
               <VStack>
                 <Text style={styles.text} color={"grey"}>
-                  09:30 am
+                  {props.time}
                 </Text>
               </VStack>
             </HStack>
@@ -60,9 +60,7 @@ const YAListItem = (...props) => {
                 />
               </VStack>
               <VStack>
-                <Text style={styles.text}>
-                  Free Zone, Shuwaikh, Block 9, Street 79, CODED Campus
-                </Text>
+                <Text style={styles.text}>{props.location}</Text>
               </VStack>
             </HStack>
           </VStack>
