@@ -4,6 +4,10 @@ import { Box } from "native-base";
 import LocationListIcon from "../components/shared/LocationListIcon";
 import GatheringListIcon from "../components/shared/GatheringListIcon";
 import CreateGatheringIcon from "../components/shared/CreateGatheringIcon";
+// importing libraries:
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+const Tab = createBottomTabNavigator();
 
 const NavBar = () => {
   return (
