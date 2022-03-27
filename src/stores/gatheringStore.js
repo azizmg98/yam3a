@@ -2,16 +2,28 @@ import { instance } from "./instance";
 import { makeAutoObservable } from "mobx";
 
 class GatheringStore {
+  hostedGatherings = [];
   gatherings = [];
 
   constructor() {
     makeAutoObservable(this);
   }
 
+  //? remove gatherings since we don't need them
   fetchGathering = async () => {
     try {
       const res = await instance.get("/gatherings");
       this.gatherings = res.data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  fetchHostGathering = async () => {
+    try {
+      const res = await instance.get("gatherings/host");
+      this.hostedGatherings = res.data;
+      console.log("hosted gatherings", this.hostedGatherings);
     } catch (error) {
       console.error(error);
     }
@@ -42,5 +54,5 @@ class GatheringStore {
 }
 
 const gatheringStore = new GatheringStore();
-gatheringStore.fetchGathering();
+
 export default gatheringStore;

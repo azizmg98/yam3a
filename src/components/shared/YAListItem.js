@@ -22,7 +22,7 @@ import YATitle from "./YATitle";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 import { color } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
-const YAListItem = () => {
+const YAListItem = (...props) => {
   return (
     <View style={styles.container}>
       <Box style={styles.box}>

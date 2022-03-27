@@ -12,7 +12,7 @@ const GuestItem = ({ user }) => {
   const handleAddingGuest = (user) => {
     setGuest(user);
     // console.log("inside handle submit");
-    console.log(guest);
+    // console.log(guest);
     authStore.addGuest(user._id);
     // authStore.removeUsertoInvite(guest);
   };
