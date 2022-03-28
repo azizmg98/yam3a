@@ -1,19 +1,17 @@
 import { StyleSheet, ScrollView } from "react-native";
 import { observer } from "mobx-react";
-import GuestItem from "./GuestItem";
+import AddedGuest from "./AddedGuest";
 import authStore from "../../../stores/authStore";
 // import { Avatar } from "native-base";
 
-const GuestList = ({ route }) => {
-  const { gathering } = route;
-  const usersToInvite = authStore.usersToInvite.map((user) => (
-    <GuestItem key={user._id} gathering={gathering} user={user} />
+const ListAddedGuest = ({ gathering }) => {
+  const addedGuestList = authStore.guests.map((guest) => (
+    <AddedGuest key={guest._id} gathering={gathering} guest={guest} />
   ));
-
-  return <ScrollView>{usersToInvite}</ScrollView>;
+  return <ScrollView>{addedGuestList}</ScrollView>;
 };
 
-export default observer(GuestList);
+export default observer(ListAddedGuest);
 
 const styles = StyleSheet.create({
   container: {

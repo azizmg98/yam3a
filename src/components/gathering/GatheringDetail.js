@@ -1,31 +1,36 @@
-import { StyleSheet, View, Dimensions, Text } from "react-native";
+import { StyleSheet, View, Dimensions, Text, Image } from "react-native";
+import { Button } from "native-base";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import BottomSheet from "./BottomSheet";
-import { Image } from "native-base";
-import { Ionicons } from "@expo/vector-icons";
+import { baseURL } from "../../stores/instance";
+import ListAddedGuest from "../users/guest/ListAddedGuest";
 
-const GatheringDetail = ({ navigation }) => {
+const GatheringDetail = ({ route, navigation }) => {
+  const { gathering } = route.params;
+  console.log(
+    "🚀 ~ file: GatheringDetail.js ~ line 10 ~ GatheringDetail ~ gathering",
+    gathering
+  );
+  const handleAddingGuest = () => {
+    navigation.navigate("GuestList", { gathering: gathering });
+  };
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={styles.container}>
         <StatusBar style="light" />
-        <Ionicons
-          name="md-caret-back-circle-sharp"
-          style={styles.backIcon}
-          size={50}
-          color="white"
-          onPress={() => navigation.navigate("GatheringList")}
-        />
         <Image
-          style={styles.yam3aImage}
-          source={{
-            uri: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2019%2F09%2Fgettyimages-143479959-2000.jpg&w=1100&h=737&c=sc&poi=face&q=60",
-            alt: "yam3a image",
-          }}
-        />
-        <BottomSheet />
+          source={{ uri: baseURL + gathering.image }}
+          style={styles.gatheringImage}
+          resizeMode="cover"
+        ></Image>
+        <Button style={styles.button} onPress={handleAddingGuest}>
+          Invite Guests
+        </Button>
+        <View>
+          <Text style={{ top: 50, backgroundColor: "white" }}>
+            {gathering.title}
+          </Text>
+        </View>
       </View>
     </GestureHandlerRootView>
   );
@@ -50,5 +55,13 @@ const styles = StyleSheet.create({
     left: 20,
     marginTop: 40,
     opacity: 0.5,
+  },
+  button: {
+    backgroundColor: "rgba(99, 32, 238, 1)",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop: 100,
   },
 });

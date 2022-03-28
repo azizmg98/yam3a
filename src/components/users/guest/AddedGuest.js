@@ -1,28 +1,24 @@
 import { StyleSheet, View, TouchableOpacity } from "react-native";
+
+import { useState } from "react/cjs/react.development";
+
+// import { baseURL } from "../../stores/instance";
 import { Button, Text, HStack } from "native-base";
 import authStore from "../../../stores/authStore";
 
-const GuestItem = ({ gathering, user }) => {
-  const handleAddingGuest = () => {
-    authStore.addGuest(gathering, user);
-    console.log(
-      "🚀 ~ file: GuestItem.js ~ line 6 ~ GuestItem ~ gathering",
-      gathering
-    );
-  };
+const AddedGuestItem = ({ guest }) => {
   return (
     <TouchableOpacity>
       <View style={styles.box}>
+        {/* <Image style={styles.image} source={{ uri: user.image }} /> */}
+
         <Text style={styles.username}>{user.username}</Text>
-        <Button style={styles.button} onPress={() => handleAddingGuest()}>
-          Invite
-        </Button>
       </View>
     </TouchableOpacity>
   );
 };
 
-export default GuestItem;
+export default AddedGuestItem;
 
 const styles = StyleSheet.create({
   username: {

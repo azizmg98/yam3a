@@ -19,17 +19,15 @@ class GatheringStore {
     }
   };
 
-  fetchHostGathering = async () => {
+  fetchGathering = async () => {
     try {
-      const res = await instance.get("gatherings/host");
-      this.hostedGatherings = res.data;
-      console.log("hosted gatherings", this.hostedGatherings);
+      const res = await instance.get("/gatherings");
+      this.gatherings = res.data;
     } catch (error) {
       console.error(error);
     }
   };
-
-  // function below is not tested
+  /// function below is not tested
   createGathering = async (gathering, navigation) => {
     try {
       const formData = new FormData();
@@ -37,7 +35,7 @@ class GatheringStore {
         console.log({ key, value: gathering[key] });
         formData.append(key, gathering[key]);
       }
-      const res = await instance.post(`/gatherings`, formData, {
+      const res = await instance.post("/gatherings", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -54,5 +52,6 @@ class GatheringStore {
 }
 
 const gatheringStore = new GatheringStore();
+gatheringStore.fetchGathering();
 
 export default gatheringStore;

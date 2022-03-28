@@ -18,7 +18,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import YATitle from "../shared/YATitle";
-import { useNavigation } from "@react-navigation/native";
+// import { useNavigation } from "@react-navigation/native";
 import { HStack, VStack } from "native-base";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import YAText from "../shared/YAText";
@@ -27,8 +27,9 @@ import YAAvatar from "../shared/YAAvatar";
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT;
 
-const BottomSheet = () => {
-  const navigation = useNavigation();
+const BottomSheet = (gathering) => {
+  // const gathering = props.gathering;
+  // const navigation = useNavigation();
   const translateY = useSharedValue(0);
   const context = useSharedValue({ y: 0 });
   const gesture = Gesture.Pan()

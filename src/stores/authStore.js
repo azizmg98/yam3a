@@ -89,19 +89,19 @@ class AuthStore {
     }
   };
 
-  addGuest = async (ghatheringID, newGuest) => {
+  addGuest = async (gatheringID, newGuest) => {
     try {
       const response = await instance.post(
-        `/gatherings/${ghatheringID}/guest`,
+        `/gatherings/${gatheringID}/guests`,
         newGuest
       );
 
-      console.log(response.data);
+      // console.log(response.data);
       this.guests.push(response.data);
       await this.fetchGuest();
     } catch (error) {
       console.log(
-        "🚀 ~ file: authStore.js ~ line 18 ~ authStore ~ addGuest = ~ error",
+        "🚀 ~ file: authStore.js ~ line 66 ~ authStore ~ addGuest = ~ error",
         error
       );
     }
@@ -120,6 +120,7 @@ class AuthStore {
 }
 
 const authStore = new AuthStore();
+authStore.addGuest();
 authStore.checkForToken();
 
 export default authStore;

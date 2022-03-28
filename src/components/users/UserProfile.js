@@ -6,6 +6,7 @@ import {
   Image,
   ScrollView,
   Dimensions,
+  Pressable,
 } from "react-native";
 import React from "react";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
@@ -15,68 +16,90 @@ import authStore from "../../stores/authStore";
 import { baseURL } from "../../stores/instance";
 import { observer } from "mobx-react-lite";
 import gatheringStore from "../../stores/gatheringStore";
+import GatheringDetail from "../../components/gathering/GatheringDetail";
 import YAHostedCard from "../shared/YAHostedCard";
 import YATitle from "../shared/YATitle";
 import { Box, Button, HStack, VStack } from "native-base";
 import YAText from "../shared/YAText";
-import YAImageS from "../shared/YAImageS";
+
+import BottomSheet from "../gathering/BottomSheet";
 
 const UserProfile = ({ navigation }) => {
   const user = authStore.user;
 
+  const handlePress = (gathering) => {
+    navigation.navigate(
+      "GatheringDetail",
+      { gathering }
+      // <GatheringDetail key={gathering._id} gathering={gathering} />
+    );
+  };
+
   const userGatherings = gatheringStore.gatherings
     .filter((gathering) => gathering.host === user._id)
     .map((gathering) => (
-      <View style={styles.cardContainer}>
-        <Box style={styles.box}>
-          <HStack style={styles.topRow}>
-            <VStack>
-              <Image
-                source={{ uri: baseURL + gathering.image }}
-                style={styles.gatheringImage}
-                resizeMode="cover"
-              ></Image>
-            </VStack>
-            <VStack>
-              <YATitle title={gathering.title} />
-              <HStack>
-                <VStack>
-                  <AntDesign name="calendar" size={21} color="#9A9797" />
-                </VStack>
-                <VStack>
-                  <YAText style={styles.text} title="Friday, March 25" />
-                </VStack>
-                <VStack>
-                  <Ionicons name="time-outline" size={22} color="#9A9797" />
-                </VStack>
-                <VStack>
-                  <Text style={styles.text} color={"grey"}>
-                    {gathering.time}
-                  </Text>
-                </VStack>
-              </HStack>
-              <HStack style={styles.locationRow}>
-                <VStack>
-                  <Ionicons name="location-outline" size={22} color="#9A9797" />
-                </VStack>
-                <VStack>
-                  <Text style={styles.text}>
-                    Free Zone, Shuwaikh, Block 9, Street 79, CODED Campus
-                  </Text>
-                </VStack>
-              </HStack>
-            </VStack>
-          </HStack>
-          <View>
-            <HStack style={styles.hLine}></HStack>
-          </View>
-          <HStack style={styles.actionRow}>
-            <Button variant="ghost" _text={{ color: "#FF0000" }}>
-              Cancel
-            </Button>
-          </HStack>
-        </Box>
-      </View>
+      <Pressable
+        onPress={() =>
+          navigation.navigate("GatheringDetail", { gathering }) && (
+            <BottomSheet key={gathering._id} gathering={gathering} />
+          )
+        }
+      >
+        <View style={styles.cardContainer}>
+          <Box style={styles.box}>
+            <HStack style={styles.topRow}>
+              <VStack>
+                <Image
+                  source={{ uri: baseURL + gathering.image }}
+                  style={styles.gatheringImage}
+                  resizeMode="cover"
+                ></Image>
+              </VStack>
+              <VStack>
+                <YATitle title={gathering.title} />
+                <HStack>
+                  <VStack>
+                    <AntDesign name="calendar" size={21} color="#9A9797" />
+                  </VStack>
+                  <VStack>
+                    <YAText style={styles.text} title="Friday, March 25" />
+                  </VStack>
+                  <VStack>
+                    <Ionicons name="time-outline" size={22} color="#9A9797" />
+                  </VStack>
+                  <VStack>
+                    <Text style={styles.text} color={"grey"}>
+                      {gathering.time}
+                    </Text>
+                  </VStack>
+                </HStack>
+                <HStack style={styles.locationRow}>
+                  <VStack>
+                    <Ionicons
+                      name="location-outline"
+                      size={22}
+                      color="#9A9797"
+                    />
+                  </VStack>
+                  <VStack>
+                    <Text style={styles.text}>
+                      Free Zone, Shuwaikh, Block 9, Street 79, CODED Campus
+                    </Text>
+                  </VStack>
+                </HStack>
+              </VStack>
+            </HStack>
+            <View>
+              <HStack style={styles.hLine}></HStack>
+            </View>
+            <HStack style={styles.actionRow}>
+              <Button variant="ghost" _text={{ color: "#FF0000" }}>
+                Cancel
+              </Button>
+            </HStack>
+          </Box>
+        </View>
+      </Pressable>
     ));
 
   return (
