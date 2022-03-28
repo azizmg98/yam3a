@@ -27,6 +27,10 @@ const LocationItem = ({ route }) => {
           </View>
           <HStack style={styles.actionRow}>
             <Button variant="ghost" _text={{ color: "#6320EE" }}>
+              Select
+            </Button>
+            <VStack style={styles.vLine}></VStack>
+            <Button variant="ghost" _text={{ color: "#789178" }}>
               Edit
             </Button>
             <VStack style={styles.vLine}></VStack>

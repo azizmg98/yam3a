@@ -4,9 +4,14 @@ import authStore from "../../stores/authStore";
 import gatheringStore from "../../stores/gatheringStore";
 // import { TouchableOpacity } from "react-native";
 import { StyleSheet, Text, View, Dimensions, Platform } from "react-native";
-import { Button, VStack, Input } from "native-base";
+import { Button, VStack, Input, HStack } from "native-base";
+import DatePicker from "./DatePicker";
+import TimePicker from "./TimePicker";
+import moment from "moment";
+import LocationCreate from "../location/LocationCreate";
+import { observer } from "mobx-react";
 
-const GatheringCreate = () => {
+const GatheringCreate = ({ navigation }) => {
   const user = authStore.user;
   //   const [image1, setImage] = useState(null);
 
@@ -61,15 +66,35 @@ const GatheringCreate = () => {
     // <TouchableOpacity onPress={Keyboard.dismiss} accessible={false}>
     <View
       style={{
-        flex: 1,
-        paddingTop: "10",
-        justifyContent: "center",
-        alignItems: "center",
+        alignSelf: "center",
+        marginTop: 100,
       }}
     >
       <Text category="h4" style={{ marginBottom: 10 }}>
         Create a gathering
       </Text>
+
+      <DatePicker
+        defaultDate={moment().format("YYYY-MM-DD")}
+        onDateChange={(value) => console.log("date changed to " + value)}
+        textStyle={{
+          paddingVertical: 15,
+          paddingHorizontal: 10,
+          borderColor: "grey",
+          borderWidth: 1,
+        }}
+      />
+
+      <TimePicker
+        defaultTime={moment().format("LT")}
+        onDateChange={(value) => console.log("time changed to " + value)}
+        textStyle={{
+          paddingVertical: 15,
+          paddingHorizontal: 10,
+          borderColor: "grey",
+          borderWidth: 1,
+        }}
+      />
       {/* <Pressable onPress={pickImage}>
           {image1 ? (
             <Image
@@ -85,6 +110,9 @@ const GatheringCreate = () => {
             />
           )}
         </Pressable> */}
+      <Text style={{ marginTop: 20, marginBottom: 7 }}>
+        Add Gathering Title
+      </Text>
       <Input
         style={{
           marginLeft: 10,
@@ -98,36 +126,22 @@ const GatheringCreate = () => {
           setGatheringCreate({ ...gatheringCreate, title: nextValue })
         }
       />
-      <VStack>
-        <View style={styles.pickedDateContainer}>
-          <Text style={styles.pickedDate}>{date.toUTCString()}</Text>
-        </View>
-        {!isPickerShow && (
-          <Text style={styles.btnContainer}>
-            <Button title="Show Picker" color="purple" onPress={showPicker}>
-              Update
-            </Button>
-          </Text>
-        )}
-        {/* The date picker  */}
-        {/* The date picker */}
-        {isPickerShow && (
-          <DateTimePicker
-            value={date}
-            mode={"date"}
-            display={Platform.OS === "ios" ? "spinner" : "default"}
-            is24Hour={true}
-            onChange={onChange}
-            style={styles.datePicker}
-          />
-        )}
-      </VStack>
+
+      {/* <Text style={styles.pickedDate}>{date.toUTCString()}</Text> */}
+      <HStack style={styles.actionRow}>
+        <Button
+          variant="ghost"
+          _text={{ color: "#6320EE" }}
+          onPress={() => navigation.navigate("LocationList")}
+        >
+          + Add Location
+        </Button>
+      </HStack>
       <Button
         style={{
-          // marginLeft: "auto",
-          // marginRight: "auto",
-          marginTop: 30,
-          width: "90%",
+          marginTop: 20,
+          alignSelf: "center",
+          width: Dimensions.get("window").width - 40,
         }}
         status="danger"
         appearance="outline"
@@ -144,7 +158,7 @@ const GatheringCreate = () => {
   );
 };
 
-export default GatheringCreate;
+export default observer(GatheringCreate);
 
 const styles = StyleSheet.create({
   container: {
@@ -156,19 +170,19 @@ const styles = StyleSheet.create({
     padding: 50,
   },
   pickedDateContainer: {
-    padding: 20,
-    backgroundColor: "#eee",
-    borderRadius: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+    width: Dimensions.get("window").width - 40,
+    alignSelf: "center",
+    backgroundColor: "lightgrey",
+    height: 50,
+    borderRadius: 5,
   },
   pickedDate: {
     fontSize: 18,
     color: "black",
-  },
-  btnContainer: {
-    padding: 30,
-    height: 30,
-    width: 30,
-    color: "white",
   },
   // This only works on iOS
   datePicker: {
@@ -178,5 +192,9 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "flex-start",
+  },
+  actionRow: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
   },
 });
