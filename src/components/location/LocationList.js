@@ -7,7 +7,7 @@ import LocationItem from "./LocationItem";
 import { observer } from "mobx-react";
 
 const LocationList = () => {
-  const locationList = locationStore.locations.map((location) => (
+  const locationList = locationStore.userLocations.map((location) => (
     <LocationItem key={location._id} location={location} />
   ));
 

@@ -28,7 +28,7 @@ const GatheringItem = ({ gathering }) => {
       }}
     >
       <YAListItem
-        uri={gathering.image}
+        uri={image}
         title={gathering.title}
         date={gathering.date}
         time={gathering.time}

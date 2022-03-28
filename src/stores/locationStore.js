@@ -8,6 +8,7 @@ import LocationList from "../components/location/LocationList";
 class LocationStore {
   location = null;
   locations = [];
+  userLocations = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -38,9 +39,19 @@ class LocationStore {
       );
     }
   };
+
+  fetchUserLocations = async () => {
+    try {
+      const res = await instance.get("locations/user");
+      this.userLocations = res.data;
+      console.log(this.userLocations);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 }
 
 const locationStore = new LocationStore();
-// locationStore.fetchLocations();
+locationStore.fetchLocations();
 
 export default locationStore;

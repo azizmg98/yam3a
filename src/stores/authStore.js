@@ -3,6 +3,7 @@ import { makeAutoObservable } from "mobx";
 import decode from "jwt-decode";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import gatheringStore from "./gatheringStore";
+import locationStore from "./locationStore";
 
 class AuthStore {
   user = null;
@@ -66,6 +67,7 @@ class AuthStore {
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       this.user = decode(token);
       gatheringStore.fetchHostGathering();
+      locationStore.fetchUserLocations();
       console.log(this.user);
     } catch (error) {
       console.log(error);
@@ -77,7 +79,7 @@ class AuthStore {
       const token = await AsyncStorage.getItem("myToken");
       if (token) {
         const decodedToken = decode(token);
-        console.log(this.user);
+        console.log("user", this.user);
         if (Date.now() < +decodedToken.exp) {
           this.setUser(token);
         } else {
