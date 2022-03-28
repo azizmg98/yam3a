@@ -11,6 +11,7 @@ import {
   VStack,
   Button,
 } from "native-base";
+import { baseURL } from "../../stores/instance";
 
 // importing shared components:
 import YAText from "./YAText";

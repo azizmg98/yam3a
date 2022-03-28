@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, Dimensions } from "react-native";
-import { NativeBaseProvider, ScrollView, VStack } from "native-base";
+import { StyleSheet, Dimensions } from "react-native";
+import { ScrollView, VStack } from "native-base";
 import React from "react";
 
 import locationStore from "../../stores/locationStore";
@@ -7,16 +7,13 @@ import LocationItem from "./LocationItem";
 import { observer } from "mobx-react";
 
 const LocationList = () => {
-  const locationList = locationStore.locations.map((location) => (
+  const locationList = locationStore.userLocations.map((location) => (
     <LocationItem key={location._id} location={location} />
   ));
 
   return (
     <VStack style={styles.list}>
-      {/* <ScrollView>{locationList}</ScrollView> */}
-      <ScrollView>
-        <LocationItem />
-      </ScrollView>
+      <ScrollView>{locationList}</ScrollView>
     </VStack>
   );
 };

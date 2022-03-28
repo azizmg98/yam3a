@@ -5,8 +5,17 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import BottomSheet from "./BottomSheet";
 import { Image } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
+import { baseURL } from "../../stores/instance";
 
-const GatheringDetail = ({ navigation }) => {
+const GatheringDetail = ({
+  navigation,
+  image,
+  title,
+  guests,
+  date,
+  time,
+  location,
+}) => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={styles.container}>
@@ -21,11 +30,17 @@ const GatheringDetail = ({ navigation }) => {
         <Image
           style={styles.yam3aImage}
           source={{
-            uri: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2019%2F09%2Fgettyimages-143479959-2000.jpg&w=1100&h=737&c=sc&poi=face&q=60",
+            uri: image,
             alt: "yam3a image",
           }}
         />
-        <BottomSheet />
+        <BottomSheet
+          title={title}
+          guests={guests}
+          date={date}
+          time={time}
+          location={location}
+        />
       </View>
     </GestureHandlerRootView>
   );

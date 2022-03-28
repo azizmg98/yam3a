@@ -1,25 +1,22 @@
 import { StyleSheet, Text, View, Dimensions } from "react-native";
-import React from "react";
-import LocationDetails from "./LocationDetails";
-import locationStore from "../../stores/locationStore";
 import { HStack, NativeBaseProvider, VStack, Box, Button } from "native-base";
-import { AntDesign, Ionicons } from "@expo/vector-icons";
-import YAText from "../shared/YAText";
+import { Ionicons } from "@expo/vector-icons";
 import YATitle from "../shared/YATitle";
+import YAText from "../shared/YAText";
 
-const LocationItem = ({ route }) => {
+const LocationItem = ({ location }) => {
   // const location = route.params.location;
   return (
     <NativeBaseProvider>
       <View style={styles.container}>
         <Box style={styles.box}>
-          <YATitle title="location title" />
+          <YATitle title={location.title} />
           <HStack style={styles.locationRow}>
             <VStack>
-              <Ionicons name="location-outline" size={22} color="#9A9797" />
-            </VStack>
-            <VStack>
-              <Text style={styles.text}>Location title</Text>
+              <HStack>
+                <Ionicons name="location-outline" size={22} color="#9A9797" />
+                <YAText title={location.address} />
+              </HStack>
             </VStack>
           </HStack>
           <View>
@@ -40,9 +37,6 @@ const LocationItem = ({ route }) => {
           </HStack>
         </Box>
       </View>
-      {/* <Text>{location.title}</Text>
-      <Text>{location.address}</Text>
-      <Text>{location.coordinates}</Text> */}
     </NativeBaseProvider>
   );
 };

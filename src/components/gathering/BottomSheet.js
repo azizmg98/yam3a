@@ -9,13 +9,9 @@ import {
 import { React, useEffect } from "react";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
-  Extrapolate,
-  interpolate,
-  useAnimatedScrollHandler,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
-  withTiming,
 } from "react-native-reanimated";
 import YATitle from "../shared/YATitle";
 import { useNavigation } from "@react-navigation/native";
@@ -27,7 +23,7 @@ import YAAvatar from "../shared/YAAvatar";
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT;
 
-const BottomSheet = () => {
+const BottomSheet = (props) => {
   const navigation = useNavigation();
   const translateY = useSharedValue(0);
   const context = useSharedValue({ y: 0 });
@@ -55,7 +51,7 @@ const BottomSheet = () => {
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
         <View style={styles.line}></View>
         <View style={styles.gatheringTitle}>
-          <YATitle title="Gathering Title" />
+          <YATitle title={props.title} />
         </View>
         <HStack style={styles.dateTimeRow}>
           <VStack>
