@@ -2,6 +2,7 @@ import { instance } from "./instance";
 import { makeAutoObservable } from "mobx";
 import decode from "jwt-decode";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import gatheringStore from "./gatheringStore";
 
 class AuthStore {
   user = null;
@@ -54,7 +55,9 @@ class AuthStore {
       this.user = null;
       this.users = [];
       await AsyncStorage.removeItem("myToken");
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   setUser = async (token) => {
@@ -62,7 +65,11 @@ class AuthStore {
       await AsyncStorage.setItem("myToken", token);
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       this.user = decode(token);
-    } catch (error) {}
+      gatheringStore.fetchHostGathering();
+      console.log(this.user);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   checkForToken = async () => {
@@ -70,13 +77,16 @@ class AuthStore {
       const token = await AsyncStorage.getItem("myToken");
       if (token) {
         const decodedToken = decode(token);
+        console.log(this.user);
         if (Date.now() < +decodedToken.exp) {
-          await this.setUser(token);
+          this.setUser(token);
         } else {
           this.signout();
         }
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   addGuest = async (ghatheringID, newGuest) => {
