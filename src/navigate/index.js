@@ -11,7 +11,6 @@ import user from "../stores/authStore";
 import GuestsList from "../components/users/guest/GuestsList";
 
 import GatheringDetail from "../components/gathering/GatheringDetail";
-import YAAvatar from "../components/shared/YAAvatar";
 import YAHostProfileIcon from "../components/shared/YAHostProfileIcon";
 import UserProfile from "../components/users/UserProfile";
 import AddLocationIcon from "../components/shared/AddLocationIcon";
@@ -21,7 +20,7 @@ const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
   return (
     // screenOptions renders options for all screens
-    <Navigator initialRouteName="Signin" screenOptions={{}}>
+    <Navigator initialRouteName="LocationList" screenOptions={{}}>
       <Screen
         name="Signup"
         component={Signup}

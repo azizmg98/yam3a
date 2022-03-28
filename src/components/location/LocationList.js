@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, Dimensions } from "react-native";
-import { NativeBaseProvider, ScrollView, VStack } from "native-base";
+import { StyleSheet, Dimensions } from "react-native";
+import { ScrollView, VStack } from "native-base";
 import React from "react";
 
 import locationStore from "../../stores/locationStore";

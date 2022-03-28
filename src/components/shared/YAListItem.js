@@ -29,8 +29,7 @@ const YAListItem = (props) => {
       <Box style={styles.box}>
         <HStack style={styles.topRow}>
           <VStack>
-            {/* make image display default image if image path is undefined */}
-            <YAImageS uri={baseURL + props.uri} marginRight={3} />
+            <YAImageS uri={props.uri} marginRight={3} />
           </VStack>
           <VStack>
             <YATitle title={props.title} />

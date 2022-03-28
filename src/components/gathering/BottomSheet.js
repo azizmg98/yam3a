@@ -2,23 +2,18 @@ import { StyleSheet, Text, View, Dimensions } from "react-native";
 import { React, useEffect } from "react";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
-  Extrapolate,
-  interpolate,
-  useAnimatedScrollHandler,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
-  withTiming,
 } from "react-native-reanimated";
 import YATitle from "../shared/YATitle";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import GatheringList from "./GatheringList";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT;
 
-const BottomSheet = () => {
+const BottomSheet = (props) => {
   const navigation = useNavigation();
   const translateY = useSharedValue(0);
   const context = useSharedValue({ y: 0 });
@@ -53,7 +48,7 @@ const BottomSheet = () => {
         />
 
         <View style={styles.line}></View>
-        <YATitle title="Gathering Title" />
+        <YATitle title={props.title} />
       </Animated.View>
     </GestureDetector>
   );
