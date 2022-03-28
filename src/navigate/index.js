@@ -2,18 +2,15 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Signup from "../components/auth/Signup";
 import Signin from "../components/auth/Signin";
 import Signout from "../components/auth/Signout";
-import Home from "../components/Home";
 import GatheringList from "../components/gathering/GatheringList";
 import LocationCreate from "../components/location/LocationCreate";
 import LocationList from "../components/location/LocationList";
-
-import user from "../stores/authStore";
 import GuestsList from "../components/users/guest/GuestsList";
-
 import GatheringDetail from "../components/gathering/GatheringDetail";
 import YAHostProfileIcon from "../components/shared/YAHostProfileIcon";
 import UserProfile from "../components/users/UserProfile";
 import AddLocationIcon from "../components/shared/AddLocationIcon";
+import GatheringCreate from "../components/gathering/GatheringCreate";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -22,15 +19,16 @@ const RootNavigator = () => {
     // screenOptions renders options for all screens
     <Navigator initialRouteName="GatheringList" screenOptions={{}}>
       <Screen
-        name="Signup"
-        component={Signup}
-        // options={{ headerShown: false }}
-      />
-      <Screen
         name="Signin"
         component={Signin}
         options={{ headerShown: false }}
       />
+      <Screen
+        name="Signup"
+        component={Signup}
+        // options={{ headerShown: false }}
+      />
+
       <Screen
         name="LocationCreate"
         component={LocationCreate}
@@ -39,7 +37,7 @@ const RootNavigator = () => {
       <Screen
         name="GatheringList"
         options={{
-          headerTitle: "Hosted Gatherings",
+          headerTitle: "Invitations",
           headerLeft: () => <YAHostProfileIcon />,
           headerRight: () => <Signout />,
         }}
@@ -52,7 +50,7 @@ const RootNavigator = () => {
           headerTitle: "My Locations",
           headerLeft: () => <YAHostProfileIcon />,
           headerRight: () => <AddLocationIcon />,
-          gestureDirection: "horizontal-inverted",
+          // gestureDirection: "horizontal-inverted",
         }}
         component={LocationList}
       />
@@ -77,6 +75,14 @@ const RootNavigator = () => {
         name="GatheringDetail"
         component={GatheringDetail}
         options={{ headerShown: false }}
+      />
+
+      <Screen
+        name="GatheringCreate"
+        options={{
+          headerShown: false,
+        }}
+        component={GatheringCreate}
       />
     </Navigator>
   );

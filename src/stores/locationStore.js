@@ -25,7 +25,6 @@ class LocationStore {
 
   addLocation = async (address, pin) => {
     const newLocation = [address, pin];
-    console.log(newLocation);
     const navigation = useNavigation();
     try {
       const response = await instance.post("/locations", newLocation);

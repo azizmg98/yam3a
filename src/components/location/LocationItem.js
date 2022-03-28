@@ -5,6 +5,7 @@ import YATitle from "../shared/YATitle";
 import YAText from "../shared/YAText";
 
 const LocationItem = ({ location }) => {
+  // const location = route.params.location;
   return (
     <NativeBaseProvider>
       <View style={styles.container}>

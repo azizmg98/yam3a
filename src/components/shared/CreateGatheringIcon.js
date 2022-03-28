@@ -11,9 +11,9 @@ const CreateGatheringIcon = () => {
         style={styles.createGatheringIcon}
         name="md-add-circle"
         size={70}
-        color="#6E876E"
+        color="#6320EE"
         onPress={() => {
-          navigation.navigate("GatheringDetail");
+          navigation.navigate("GatheringCreate");
         }}
       />
     </View>
@@ -27,5 +27,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     marginTop: -43,
     alignSelf: "center",
+    shadowColor: "black",
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
   },
 });

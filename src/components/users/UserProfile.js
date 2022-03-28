@@ -7,24 +7,20 @@ import {
   ScrollView,
   Dimensions,
 } from "react-native";
-import React from "react";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 import Signout from "../auth/Signout";
-//import Profile details:
 import authStore from "../../stores/authStore";
 import { baseURL } from "../../stores/instance";
 import { observer } from "mobx-react-lite";
 import gatheringStore from "../../stores/gatheringStore";
-import YAHostedCard from "../shared/YAHostedCard";
 import YATitle from "../shared/YATitle";
 import { Box, Button, HStack, VStack } from "native-base";
 import YAText from "../shared/YAText";
-import YAImageS from "../shared/YAImageS";
 
 const UserProfile = ({ navigation }) => {
   const user = authStore.user;
 
-  const userGatherings = gatheringStore.gatherings
+  const userGatherings = gatheringStore.hostedGatherings
     .filter((gathering) => gathering.host === user._id)
     .map((gathering) => (
       <View style={styles.cardContainer}>
@@ -72,7 +68,7 @@ const UserProfile = ({ navigation }) => {
           </View>
           <HStack style={styles.actionRow}>
             <Button variant="ghost" _text={{ color: "#FF0000" }}>
-              Delete
+              Cancel
             </Button>
           </HStack>
         </Box>

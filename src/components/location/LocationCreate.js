@@ -18,9 +18,11 @@ const LocationCreate = () => {
   const [pin, setPin] = useState({ latitude: 29.378586, longitude: 47.990341 });
 
   const handleSubmit = () => {
-    console.log("inside Location Create");
-    console.log(address, pin);
-    locationStore.addLocation(address, pin);
+    if (!address.title && !address.add) {
+      alert("Kindly fill all boxes to add an Location");
+    } else {
+      locationStore.addLocation(address, pin);
+    }
   };
 
   return (
