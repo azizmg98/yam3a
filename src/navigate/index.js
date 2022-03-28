@@ -22,7 +22,7 @@ const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
   return (
     // screenOptions renders options for all screens
-    <Navigator screenOptions={{}}>
+    <Navigator initialRouteName="GatheringList" screenOptions={{}}>
       <Screen
         name="Signin"
         component={Signin}
@@ -55,7 +55,7 @@ const RootNavigator = () => {
           headerTitle: "My Locations",
           headerLeft: () => <YAHostProfileIcon />,
           headerRight: () => <AddLocationIcon />,
-          gestureDirection: "horizontal-inverted",
+          // gestureDirection: "horizontal-inverted",
         }}
         component={LocationList}
       />
