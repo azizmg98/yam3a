@@ -3,9 +3,12 @@ import { HStack, NativeBaseProvider, VStack, Box, Button } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import YATitle from "../shared/YATitle";
 import YAText from "../shared/YAText";
+import { useNavigation } from "@react-navigation/native";
+import locationStore from "../../stores/locationStore";
 
 const LocationItem = ({ location }) => {
-  // const location = route.params.location;
+  const navigation = useNavigation();
+
   return (
     <NativeBaseProvider>
       <View style={styles.container}>
@@ -23,7 +26,18 @@ const LocationItem = ({ location }) => {
             <HStack style={styles.hLine}></HStack>
           </View>
           <HStack style={styles.actionRow}>
-            <Button variant="ghost" _text={{ color: "#6320EE" }}>
+            <Button
+              variant="ghost"
+              _text={{ color: "#6320EE" }}
+              onPress={
+                // (value) => {
+                () =>
+                  (locationStore.gatheringLocation = navigation.navigate(
+                    "GatheringCreate",
+                    location
+                  ))
+              }
+            >
               Select
             </Button>
             <VStack style={styles.vLine}></VStack>

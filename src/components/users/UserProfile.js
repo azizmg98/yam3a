@@ -20,60 +20,58 @@ import YAText from "../shared/YAText";
 const UserProfile = ({ navigation }) => {
   const user = authStore.user;
 
-  const userGatherings = gatheringStore.hostedGatherings
-    .filter((gathering) => gathering.host === user._id)
-    .map((gathering) => (
-      <View style={styles.cardContainer}>
-        <Box style={styles.box}>
-          <HStack style={styles.topRow}>
-            <VStack>
-              <Image
-                source={{ uri: baseURL + gathering.image }}
-                style={styles.gatheringImage}
-                resizeMode="cover"
-              ></Image>
-            </VStack>
-            <VStack>
-              <YATitle title={gathering.title} />
-              <HStack>
-                <VStack>
-                  <AntDesign name="calendar" size={21} color="#9A9797" />
-                </VStack>
-                <VStack>
-                  <YAText style={styles.text} title="Friday, March 25" />
-                </VStack>
-                <VStack>
-                  <Ionicons name="time-outline" size={22} color="#9A9797" />
-                </VStack>
-                <VStack>
-                  <Text style={styles.text} color={"grey"}>
-                    {gathering.time}
-                  </Text>
-                </VStack>
-              </HStack>
-              <HStack style={styles.locationRow}>
-                <VStack>
-                  <Ionicons name="location-outline" size={22} color="#9A9797" />
-                </VStack>
-                <VStack>
-                  <Text style={styles.text}>
-                    Free Zone, Shuwaikh, Block 9, Street 79, CODED Campus
-                  </Text>
-                </VStack>
-              </HStack>
-            </VStack>
-          </HStack>
-          <View>
-            <HStack style={styles.hLine}></HStack>
-          </View>
-          <HStack style={styles.actionRow}>
-            <Button variant="ghost" _text={{ color: "#FF0000" }}>
-              Cancel
-            </Button>
-          </HStack>
-        </Box>
-      </View>
-    ));
+  const userGatherings = gatheringStore.hostedGatherings.map((gathering) => (
+    <View style={styles.cardContainer}>
+      <Box style={styles.box}>
+        <HStack style={styles.topRow}>
+          <VStack>
+            <Image
+              source={{ uri: baseURL + gathering.image }}
+              style={styles.gatheringImage}
+              resizeMode="cover"
+            ></Image>
+          </VStack>
+          <VStack>
+            <YATitle title={gathering.title} />
+            <HStack>
+              <VStack>
+                <AntDesign name="calendar" size={21} color="#9A9797" />
+              </VStack>
+              <VStack>
+                <YAText style={styles.text} title="Friday, March 25" />
+              </VStack>
+              <VStack>
+                <Ionicons name="time-outline" size={22} color="#9A9797" />
+              </VStack>
+              <VStack>
+                <Text style={styles.text} color={"grey"}>
+                  {gathering.time}
+                </Text>
+              </VStack>
+            </HStack>
+            <HStack style={styles.locationRow}>
+              <VStack>
+                <Ionicons name="location-outline" size={22} color="#9A9797" />
+              </VStack>
+              <VStack>
+                <Text style={styles.text}>
+                  Free Zone, Shuwaikh, Block 9, Street 79, CODED Campus
+                </Text>
+              </VStack>
+            </HStack>
+          </VStack>
+        </HStack>
+        <View>
+          <HStack style={styles.hLine}></HStack>
+        </View>
+        <HStack style={styles.actionRow}>
+          <Button variant="ghost" _text={{ color: "#FF0000" }}>
+            Cancel
+          </Button>
+        </HStack>
+      </Box>
+    </View>
+  ));
 
   return (
     <SafeAreaView style={styles.container}>

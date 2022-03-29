@@ -10,6 +10,7 @@ class AuthStore {
   users = [];
   usersToInvite = [];
   guests = [];
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -19,7 +20,7 @@ class AuthStore {
       const res = await instance.post("/authenticate/signin", user);
       this.setUser(res.data.token);
       this.fetchUsers();
-      console.log(user);
+      // console.log(this.user);
       navigation.navigate("GatheringList");
     } catch (error) {
       if (error.message == "Request failed with status code 401") {
@@ -123,5 +124,4 @@ class AuthStore {
 
 const authStore = new AuthStore();
 authStore.checkForToken();
-
 export default authStore;
