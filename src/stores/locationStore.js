@@ -9,6 +9,7 @@ class LocationStore {
   location = null;
   locations = [];
   userLocations = [];
+  gatheringLocation = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -41,9 +42,13 @@ class LocationStore {
 
   fetchUserLocations = async () => {
     try {
-      const res = await instance.get("locations/user");
-      this.userLocations = res.data;
-      console.log(this.userLocations);
+      if (authStore.user) {
+        const res = await instance.get(`/locations/${authStore.user._id}`);
+        this.userLocations = res.data;
+        console.log(this.userLocations);
+        // console.log("THIS.HOSTEDGATHERINGS");
+        // console.log(this.hostedGatherings);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -51,6 +56,5 @@ class LocationStore {
 }
 
 const locationStore = new LocationStore();
-locationStore.fetchLocations();
-
+locationStore.fetchUserLocations();
 export default locationStore;

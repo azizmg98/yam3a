@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 import { useState, useEffect } from "react";
-import { observer } from "mobx-react";
 import YAListItem from "../shared/YAListItem";
 import { Pressable } from "native-base";
 import { useNavigation } from "@react-navigation/native";
@@ -32,13 +31,13 @@ const GatheringItem = ({ gathering }) => {
         title={gathering.title}
         date={gathering.date}
         time={gathering.time}
-        location={gathering.location.address}
+        location={gathering.location}
         guests={gathering.guests}
       />
     </Pressable>
   );
 };
 
-export default observer(GatheringItem);
+export default GatheringItem;
 
 const styles = StyleSheet.create({});
