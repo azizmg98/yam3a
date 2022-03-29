@@ -32,7 +32,7 @@ const GatheringItem = ({ gathering }) => {
         title={gathering.title}
         date={gathering.date}
         time={gathering.time}
-        location={gathering.location.address}
+        location={gathering.location}
         guests={gathering.guests}
       />
     </Pressable>
