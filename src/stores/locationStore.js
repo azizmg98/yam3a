@@ -43,7 +43,6 @@ class LocationStore {
     try {
       const res = await instance.get("locations/user");
       this.userLocations = res.data;
-      console.log(this.userLocations);
     } catch (error) {
       console.error(error);
     }

@@ -7,15 +7,10 @@ import { Image } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import { baseURL } from "../../stores/instance";
 
-const GatheringDetail = ({
-  navigation,
-  image,
-  title,
-  guests,
-  date,
-  time,
-  location,
-}) => {
+const GatheringDetail = ({ route, navigation }) => {
+  const { gathering } = route.params;
+  const { image } = route.params;
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={styles.container}>
@@ -35,11 +30,11 @@ const GatheringDetail = ({
           }}
         />
         <BottomSheet
-          title={title}
-          guests={guests}
-          date={date}
-          time={time}
-          location={location}
+          title={gathering.title}
+          guests={gathering.guests}
+          date={gathering.date}
+          time={gathering.time}
+          location={gathering.location}
         />
       </View>
     </GestureHandlerRootView>

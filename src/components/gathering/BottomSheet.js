@@ -15,10 +15,14 @@ import Animated, {
 } from "react-native-reanimated";
 import YATitle from "../shared/YATitle";
 import { useNavigation } from "@react-navigation/native";
-import { HStack, VStack } from "native-base";
+import { Button, HStack, VStack } from "native-base";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import YAText from "../shared/YAText";
 import YAAvatar from "../shared/YAAvatar";
+import YAWideButton from "../shared/YAWideButton";
+import authStore from "../../stores/authStore";
+import guestStore from "../../stores/guestStore";
+import GuestItem from "./GuestItem";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT;
@@ -46,6 +50,11 @@ const BottomSheet = (props) => {
       transform: [{ translateY: translateY.value }],
     };
   });
+
+  const guestList = guestStore.availableGuests.map((guest) => (
+    <GuestItem key={guest._id} guest={guest} />
+  ));
+
   return (
     <GestureDetector gesture={gesture}>
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
@@ -64,7 +73,7 @@ const BottomSheet = (props) => {
             <Ionicons name="time-outline" size={22} color="#9A9797" />
           </VStack>
           <VStack>
-            <Text style={styles.text}>09:30 am</Text>
+            <Text style={styles.text}>{props.date}</Text>
           </VStack>
         </HStack>
         <HStack style={styles.guestsRow}>
@@ -85,7 +94,8 @@ const BottomSheet = (props) => {
           </SafeAreaView>
         </HStack>
         <View style={{ marginLeft: 20, marginTop: 20 }}>
-          <Text>My Gatherings</Text>
+          <Text>Invite guests</Text>
+          <VStack>{guestList}</VStack>
         </View>
       </Animated.View>
     </GestureDetector>

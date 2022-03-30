@@ -1,26 +1,16 @@
 import { StyleSheet, View, TouchableOpacity } from "react-native";
 
-import { useState } from "react/cjs/react.development";
-
-// import { baseURL } from "../../stores/instance";
 import { Text } from "native-base";
 import authStore from "../../../stores/authStore";
 
-const GuestItem = ({ user }) => {
-  const [guest, setGuest] = useState("");
-
-  const handleAddingGuest = (user) => {
-    setGuest(user);
-    // console.log("inside handle submit");
-    // console.log(guest);
-    authStore.addGuest(user._id);
-    // authStore.removeUsertoInvite(guest);
+const GuestItem = ({ guest }) => {
+  const handleAddingGuest = (guest) => {
+    authStore.addGuest(guest._id);
   };
   return (
-    <TouchableOpacity onPress={() => handleAddingGuest(user)}>
+    <TouchableOpacity onPress={() => handleAddingGuest(guest)}>
       <View style={styles.box}>
-        {/* <Image style={styles.image} source={{ uri: user.image }} /> */}
-        <Text style={styles.username}>{user.username}</Text>
+        <Text style={styles.username}>{guest.user.username}</Text>
       </View>
     </TouchableOpacity>
   );

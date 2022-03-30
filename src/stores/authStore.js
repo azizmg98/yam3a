@@ -43,9 +43,6 @@ class AuthStore {
     try {
       const response = await instance.get("/authenticate");
       this.users = response.data;
-      this.usersToInvite = response.data;
-      // console.log("fetchusers");
-      // console.log(this.users);
     } catch (error) {
       console.log("AuthStore -> fetchUsers -> error", error);
     }
@@ -90,38 +87,10 @@ class AuthStore {
       console.log(error);
     }
   };
-
-  addGuest = async (ghatheringID, newGuest) => {
-    try {
-      const response = await instance.post(
-        `/gatherings/${ghatheringID}/guest`,
-        newGuest
-      );
-
-      console.log(response.data);
-      this.guests.push(response.data);
-      await this.fetchGuest();
-    } catch (error) {
-      console.log(
-        "🚀 ~ file: authStore.js ~ line 18 ~ authStore ~ addGuest = ~ error",
-        error
-      );
-    }
-  };
-
-  fetchGuest = async () => {
-    try {
-      console.log("hi");
-      const response = await instance.get("/guests");
-      this.guests = response.data;
-      // console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 }
 
 const authStore = new AuthStore();
 authStore.checkForToken();
+authStore.fetchUsers();
 
 export default authStore;
