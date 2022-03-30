@@ -23,7 +23,7 @@ class GatheringStore {
 
   fetchHostGathering = async () => {
     try {
-      const res = await instance.get(`/gatherings`);
+      const res = await instance.get(`/gatherings/host`);
       this.hostedGatherings = res.data;
       // console.log("THIS.HOSTEDGATHERINGS");
       // console.log(this.hostedGatherings);

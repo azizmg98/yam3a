@@ -23,6 +23,7 @@ import YAWideButton from "../shared/YAWideButton";
 import authStore from "../../stores/authStore";
 import guestStore from "../../stores/guestStore";
 import GuestItem from "./GuestItem";
+import GatheringGuests from "./GatheringGuests";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT;
@@ -55,6 +56,10 @@ const BottomSheet = (props) => {
     <GuestItem key={guest._id} guest={guest} gatheringId={props.gatheringId} />
   ));
 
+  const gatheringGuestList = props.guests.map((guest) => (
+    <GatheringGuests guest={guest} key={guest._id} />
+  ));
+
   return (
     <GestureDetector gesture={gesture}>
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
@@ -82,14 +87,7 @@ const BottomSheet = (props) => {
               horizontal={true}
               showsHorizontalScrollIndicator={false}
             >
-              <Text>{props.guest}</Text>
-              <YAAvatar size={"lg"} marginLeft={3} />
-              <YAAvatar size={"lg"} marginLeft={3} />
-              <YAAvatar size={"lg"} marginLeft={3} />
-              <YAAvatar size={"lg"} marginLeft={3} />
-              <YAAvatar size={"lg"} marginLeft={3} />
-              <YAAvatar size={"lg"} marginLeft={3} />
-              <YAAvatar size={"lg"} marginLeft={3} />
+              <HStack>{gatheringGuestList}</HStack>
             </ScrollView>
           </SafeAreaView>
         </HStack>
