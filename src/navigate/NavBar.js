@@ -6,7 +6,7 @@ import { Box } from "native-base";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // importing components:
 import authStore from "../stores/authStore";
-import AddGuestsIcon from "../components/shared/AddGuestsIcon";
+
 import LocationListIcon from "../components/shared/LocationListIcon";
 import GatheringListIcon from "../components/shared/GatheringListIcon";
 import CreateGatheringIcon from "../components/shared/CreateGatheringIcon";
@@ -23,7 +23,6 @@ const NavBar = () => {
           <LocationListIcon />
           <CreateGatheringIcon />
           <GatheringListIcon />
-          <AddGuestsIcon />
         </Box>
       )}
     </>
