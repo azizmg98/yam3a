@@ -17,8 +17,9 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(99, 32, 238, 1)",
     flexDirection: "row",
     justifyContent: "center",
-    marginLeft: 20,
-    marginRight: 20,
+    // marginLeft: 20,
+    // marginRight: 20,
     marginTop: 20,
+    width: Dimensions.get("window").width - 40,
   },
 });

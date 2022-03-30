@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 import { Text } from "native-base";
 
-const YAText = (props) => {
-  return <Text {...props}>{props.title}</Text>;
+const YAText = ({ children, ...props }) => {
+  return <Text {...props}>{children || props.title}</Text>;
 };
 
 export default YAText;
