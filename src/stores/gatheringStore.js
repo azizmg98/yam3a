@@ -75,6 +75,5 @@ class GatheringStore {
 }
 
 const gatheringStore = new GatheringStore();
-gatheringStore.fetchHostGathering();
 
 export default gatheringStore;
