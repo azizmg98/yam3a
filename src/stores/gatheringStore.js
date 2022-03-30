@@ -21,7 +21,7 @@ class GatheringStore {
 
   fetchHostGathering = async () => {
     try {
-      const res = await instance.get("gatherings/host");
+      const res = await instance.get(`/gatherings/host`);
       this.hostedGatherings = res.data;
     } catch (error) {
       console.error(error);
