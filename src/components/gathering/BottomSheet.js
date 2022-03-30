@@ -15,7 +15,7 @@ import Animated, {
 } from "react-native-reanimated";
 import YATitle from "../shared/YATitle";
 import { useNavigation } from "@react-navigation/native";
-import { Button, HStack, VStack } from "native-base";
+import { Button, Center, HStack, VStack } from "native-base";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import YAText from "../shared/YAText";
 import YAAvatar from "../shared/YAAvatar";
@@ -82,7 +82,6 @@ const BottomSheet = (props) => {
               horizontal={true}
               showsHorizontalScrollIndicator={false}
             >
-              <Text>{props.guest}</Text>
               <YAAvatar size={"lg"} marginLeft={3} />
               <YAAvatar size={"lg"} marginLeft={3} />
               <YAAvatar size={"lg"} marginLeft={3} />
@@ -93,9 +92,24 @@ const BottomSheet = (props) => {
             </ScrollView>
           </SafeAreaView>
         </HStack>
-        <View style={{ marginLeft: 20, marginTop: 20 }}>
-          <Text>Invite guests</Text>
-          <VStack>{guestList}</VStack>
+        <View>
+          <Button
+            style={{
+              borderRadius: 30,
+              marginLeft: 20,
+              marginTop: 10,
+              padding: 10,
+              marginRight: 20,
+              backgroundColor: "rgba(99, 32, 238, 1)",
+              height: 50,
+              alignSelf: "center",
+            }}
+            onPress={() => navigation.navigate("GuestList")}
+          >
+            {" "}
+            Invite guests
+          </Button>
+          {/* <VStack>{guestList}</VStack> */}
         </View>
       </Animated.View>
     </GestureDetector>
@@ -125,6 +139,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 20,
     marginBottom: 10,
+
     width: Dimensions.get("window").width - 40,
   },
   text: {

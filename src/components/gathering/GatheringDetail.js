@@ -30,7 +30,7 @@ const GatheringDetail = ({ route, navigation }) => {
 
         <BottomSheet
           key={gathering._id}
-          gathering={gathering.gathering}
+          gathering={gathering}
           // guests={gathering.guests}
           // date={gathering.date}
           // time={gathering.time}
