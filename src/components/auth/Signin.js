@@ -21,6 +21,7 @@ import {
   Link,
   NativeBaseProvider,
 } from "native-base";
+import { observer } from "mobx-react";
 
 const Signin = ({ navigation }) => {
   const [user, setUser] = useState({ username: "", password: "", phone: "" });
@@ -127,7 +128,7 @@ const Signin = ({ navigation }) => {
   );
 };
 
-export default Signin;
+export default observer(Signin);
 
 const styles = StyleSheet.create({
   image: {

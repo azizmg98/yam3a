@@ -86,6 +86,57 @@ class AuthStore {
       console.log(error);
     }
   };
+
+  addGuest = async (ghatheringID, newGuest) => {
+    try {
+      const response = await instance.post(
+        `/gatherings/${ghatheringID}/guest`,
+        newGuest
+      );
+
+      console.log(response.data);
+      this.guests.push(response.data);
+      await this.fetchGuest();
+    } catch (error) {
+      console.log(
+        "🚀 ~ file: authStore.js ~ line 18 ~ authStore ~ addGuest = ~ error",
+        error
+      );
+    }
+  };
+
+  fetchGuest = async () => {
+    try {
+      console.log("hi");
+      const response = await instance.get("/guests");
+      this.guests = response.data;
+      // console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  uploadProfileImage = async (user) => {
+    console.log("UPLOAD PROFILE IMAGE");
+    console.log(user.image);
+    try {
+      const formData = new FormData();
+      for (const key in user) {
+        formData.append(key, user[key]);
+      }
+      const res = await instance.put(`/authenticate/${user._id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        transformRequest: (data, headers) => {
+          return formData; // this is doing the trick
+        },
+      });
+      this.user.image = res.data.image;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 const authStore = new AuthStore();

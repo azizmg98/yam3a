@@ -29,14 +29,10 @@ const LocationItem = ({ location }) => {
             <Button
               variant="ghost"
               _text={{ color: "#6320EE" }}
-              onPress={
-                // (value) => {
-                () =>
-                  (locationStore.gatheringLocation = navigation.navigate(
-                    "GatheringCreate",
-                    location
-                  ))
-              }
+              onPress={() => {
+                locationStore.gatheringLocation = location;
+                navigation.navigate("GatheringCreate");
+              }}
             >
               Select
             </Button>

@@ -16,10 +16,43 @@ import gatheringStore from "../../stores/gatheringStore";
 import YATitle from "../shared/YATitle";
 import { Box, Button, HStack, Pressable, VStack } from "native-base";
 import YAText from "../shared/YAText";
+
+import { useState } from "react";
+import * as ImagePicker from "expo-image-picker";
+
 import GatheringDetail from "../gathering/GatheringDetail";
+
 
 const UserProfile = ({ navigation }) => {
   const user = authStore.user;
+
+  const [image, setImage] = useState(null);
+
+  const pickImage = async (image) => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+    let uriParts = result.uri.split(".");
+    let fileType = uriParts[uriParts.length - 1];
+    let uri = result.uri;
+    if (!result.cancelled) {
+      setImage({
+        uri,
+        name: `photo.${fileType}`,
+        type: `image/${fileType}`,
+      });
+      user.image = {
+        uri,
+        name: `photo.${fileType}`,
+        type: `image/${fileType}`,
+      };
+      authStore.uploadProfileImage(user);
+    }
+  };
 
   const userGatherings = gatheringStore.hostedGatherings.map((gathering) => (
     <Pressable
@@ -97,25 +130,27 @@ const UserProfile = ({ navigation }) => {
         </View>
         <View style={{ alignSelf: "center" }}>
           <View style={styles.profileImage}>
-            <Image
-              // source={{ uri: baseURL + "/" + user.image }}
-              source={{
-                uri: "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png",
-              }}
-              style={styles.image}
-              resizeMode="cover"
-            ></Image>
+            {!image ? (
+              <Image
+                source={{ uri: baseURL + user.image }}
+                style={styles.image}
+                resizeMode="cover"
+              ></Image>
+            ) : (
+              <Image
+                source={{ uri: image.uri }}
+                style={styles.image}
+                resizeMode="cover"
+              ></Image>
+            )}
           </View>
           <View>
-            {/* add button */}
             <Ionicons
               style={styles.editImage}
               name="md-add-circle"
               size={50}
               color="#6E876E"
-              onPress={() => {
-                alert("edit image");
-              }}
+              onPress={() => pickImage()}
             />
           </View>
         </View>

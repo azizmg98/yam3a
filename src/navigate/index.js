@@ -12,7 +12,7 @@ import YAHostProfileIcon from "../components/shared/YAHostProfileIcon";
 import UserProfile from "../components/users/UserProfile";
 import AddLocationIcon from "../components/shared/AddLocationIcon";
 import GatheringCreate from "../components/gathering/GatheringCreate";
-
+// import GatheringCreate
 const { Navigator, Screen } = createStackNavigator();
 
 const RootNavigator = () => {
@@ -76,13 +76,13 @@ const RootNavigator = () => {
         component={GatheringCreate}
       />
 
-      {!authStore.user && (
-        <Screen
-          name="Signin"
-          component={Signin}
-          options={{ headerShown: false }}
-        />
-      )}
+      {/* {!authStore.user && ( */}
+      <Screen
+        name="Signin"
+        component={Signin}
+        options={{ headerShown: false }}
+      />
+
       <Screen
         name="Signup"
         component={Signup}

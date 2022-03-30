@@ -9,7 +9,7 @@ const YAHostProfileIcon = (props) => {
   return (
     <Pressable
       style={styles.userProfileIcon}
-      onPress={() => navigation.navigate("UserProfile")}
+      onPress={() => (navigation.navigate("UserProfile"), props)}
     >
       <Avatar
         size={10}

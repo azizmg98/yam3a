@@ -24,11 +24,16 @@ class LocationStore {
     }
   };
 
-  addLocation = async (address, pin) => {
-    const newLocation = [address, pin];
-    const navigation = useNavigation();
+  addLocation = async (address) => {
+    const user = authStore.user;
+    console.log("I'M CLICKED");
     try {
-      const response = await instance.post("/locations", newLocation);
+      const response = await instance.post(
+        `/locations/${user._id}/location`,
+        address
+      );
+      console.log("inside add location functions >> locationStore");
+      console.log(response.data);
       this.locations.push(response.data);
       console.log(this.locations);
       navigation.navigate("LocationList");
