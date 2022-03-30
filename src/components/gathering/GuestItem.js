@@ -5,7 +5,7 @@ import { HStack } from "native-base";
 import guestStore from "../../stores/guestStore";
 
 const GuestItem = ({ guest, gatheringId }) => {
-  const handleAdd = (guest, gatheringId) => {
+  const handleAdd = () => {
     guestStore.addGuest(guest._id, gatheringId);
   };
 
