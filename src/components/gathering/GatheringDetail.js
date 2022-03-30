@@ -7,15 +7,10 @@ import { Image } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import { baseURL } from "../../stores/instance";
 
-const GatheringDetail = ({
-  navigation,
-  image,
-  title,
-  guests,
-  date,
-  time,
-  location,
-}) => {
+const GatheringDetail = ({ route, navigation }) => {
+  const gathering = route.params;
+  console.log("inside gathering details");
+  console.log(gathering);
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={styles.container}>
@@ -25,21 +20,21 @@ const GatheringDetail = ({
           style={styles.backIcon}
           size={50}
           color="white"
-          onPress={() => navigation.navigate("GatheringList")}
+          onPress={() => navigation.navigate("UserProfile")}
         />
-        <Image
+        {/* <Image
+          source={{ uri: baseURL + gathering.image }}
           style={styles.yam3aImage}
-          source={{
-            uri: image,
-            alt: "yam3a image",
-          }}
-        />
+          resizeMode="cover"
+        ></Image> */}
+
         <BottomSheet
-          title={title}
-          guests={guests}
-          date={date}
-          time={time}
-          location={location}
+          key={gathering._id}
+          gathering={gathering.gathering}
+          // guests={gathering.guests}
+          // date={gathering.date}
+          // time={gathering.time}
+          // location={gathering.location}
         />
       </View>
     </GestureHandlerRootView>

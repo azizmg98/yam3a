@@ -42,10 +42,6 @@ class LocationStore {
 
   fetchUserLocations = async () => {
     try {
-<<<<<<< HEAD
-      const res = await instance.get("locations/user");
-      this.userLocations = res.data;
-=======
       if (authStore.user) {
         const res = await instance.get(`/locations/${authStore.user._id}`);
         this.userLocations = res.data;
@@ -53,7 +49,6 @@ class LocationStore {
         // console.log("THIS.HOSTEDGATHERINGS");
         // console.log(this.hostedGatherings);
       }
->>>>>>> origin/main
     } catch (error) {
       console.error(error);
     }

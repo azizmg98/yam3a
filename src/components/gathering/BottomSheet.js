@@ -19,11 +19,18 @@ import { HStack, VStack } from "native-base";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import YAText from "../shared/YAText";
 import YAAvatar from "../shared/YAAvatar";
+import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
+import authStore from "../../stores/authStore";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT;
 
-const BottomSheet = (props) => {
+const BottomSheet = ({ gathering }) => {
+  const users = authStore.users;
+  console.log("inside Bottom Sheet");
+
+  console.log(gathering.guests);
+  // const { gathering } = props;
   const navigation = useNavigation();
   const translateY = useSharedValue(0);
   const context = useSharedValue({ y: 0 });
@@ -46,25 +53,39 @@ const BottomSheet = (props) => {
       transform: [{ translateY: translateY.value }],
     };
   });
+
+  // const guests = gathering.guests.forEact((guest) =>
+  //   users.filter((user) => user._id === guest && console.log(user.username))
+  // );
+
+  // const guests = gathering.guests.map(
+  //   (guest) =>
+  //     console.log("guest ID is: " + guest) &&
+  //     authStore.users.forEach(
+  //       (user) =>
+  //         user._id == guest && console.log("guests are: " + user.username)
+  //     )
+  // );
+
   return (
     <GestureDetector gesture={gesture}>
       <Animated.View style={[styles.bottomSheetContainer, rBottomSheetStyle]}>
         <View style={styles.line}></View>
         <View style={styles.gatheringTitle}>
-          <YATitle title={props.title} />
+          <YATitle title={gathering.title} />
         </View>
         <HStack style={styles.dateTimeRow}>
           <VStack>
             <AntDesign name="calendar" size={21} color="#9A9797" />
           </VStack>
           <VStack>
-            <YAText style={styles.text} title="Friday, March 25" />
+            <YAText style={styles.text} title={gathering.date} />
           </VStack>
           <VStack>
             <Ionicons name="time-outline" size={22} color="#9A9797" />
           </VStack>
           <VStack>
-            <Text style={styles.text}>09:30 am</Text>
+            <Text style={styles.text}>{gathering.time}</Text>
           </VStack>
         </HStack>
         <HStack style={styles.guestsRow}>
@@ -85,7 +106,7 @@ const BottomSheet = (props) => {
           </SafeAreaView>
         </HStack>
         <View style={{ marginLeft: 20, marginTop: 20 }}>
-          <Text>My Gatherings</Text>
+          {/* <Text style={{ backgroundColor: "red" }}>{guests}</Text> */}
         </View>
       </Animated.View>
     </GestureDetector>
