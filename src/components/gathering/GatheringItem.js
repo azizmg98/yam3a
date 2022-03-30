@@ -1,12 +1,10 @@
 import { StyleSheet } from "react-native";
 import { useState, useEffect } from "react";
-import { observer } from "mobx-react";
 import YAListItem from "../shared/YAListItem";
 import { Pressable, Hstack } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { baseURL } from "../../stores/instance";
-import guestStore from "../../stores/guestStore";
-import GatheringDetail from "./GatheringDetail";
+
 // variable deleration
 const DEFAULT_IMAGE =
   "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2019%2F09%2Fgettyimages-143479959-2000.jpg&w=1100&h=737&c=sc&poi=face&q=60";
@@ -44,6 +42,6 @@ const GatheringItem = ({ gathering }) => {
   );
 };
 
-export default observer(GatheringItem);
+export default GatheringItem;
 
 const styles = StyleSheet.create({});

@@ -1,4 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
+import authStore from "../stores/authStore";
 import Signup from "../components/auth/Signup";
 import Signin from "../components/auth/Signin";
 import Signout from "../components/auth/Signout";
@@ -19,22 +20,6 @@ const RootNavigator = () => {
     // screenOptions renders options for all screens
     <Navigator initialRouteName="GatheringList" screenOptions={{}}>
       <Screen
-        name="Signin"
-        component={Signin}
-        options={{ headerShown: false }}
-      />
-      <Screen
-        name="Signup"
-        component={Signup}
-        // options={{ headerShown: false }}
-      />
-
-      <Screen
-        name="LocationCreate"
-        component={LocationCreate}
-        options={{ headerTitle: "Add New Location" }}
-      />
-      <Screen
         name="GatheringList"
         options={{
           headerTitle: "Invitations",
@@ -48,7 +33,7 @@ const RootNavigator = () => {
         name="LocationList"
         options={{
           headerTitle: "My Locations",
-          headerLeft: () => <YAHostProfileIcon />,
+
           headerRight: () => <AddLocationIcon />,
           // gestureDirection: "horizontal-inverted",
         }}
@@ -63,6 +48,12 @@ const RootNavigator = () => {
           headerShown: false,
         }}
         component={UserProfile}
+      />
+
+      <Screen
+        name="LocationCreate"
+        component={LocationCreate}
+        options={{ headerTitle: "Add New Location" }}
       />
 
       <Screen
@@ -83,6 +74,19 @@ const RootNavigator = () => {
           headerShown: false,
         }}
         component={GatheringCreate}
+      />
+
+      {!authStore.user && (
+        <Screen
+          name="Signin"
+          component={Signin}
+          options={{ headerShown: false }}
+        />
+      )}
+      <Screen
+        name="Signup"
+        component={Signup}
+        // options={{ headerShown: false }}
       />
     </Navigator>
   );

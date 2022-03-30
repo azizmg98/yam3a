@@ -26,5 +26,6 @@ const styles = StyleSheet.create({
   list: {
     backgroundColor: "#F4F6F4",
     height: Dimensions.get("window").height,
+    marginBottom: 200,
   },
 });

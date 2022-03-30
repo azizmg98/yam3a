@@ -1,12 +1,7 @@
 import { StyleSheet, View, TouchableOpacity } from "react-native";
-
 import { Text } from "native-base";
-import authStore from "../../../stores/authStore";
 
 const GuestItem = ({ guest }) => {
-  const handleAddingGuest = (guest) => {
-    authStore.addGuest(guest._id);
-  };
   return (
     <TouchableOpacity onPress={() => handleAddingGuest(guest)}>
       <View style={styles.box}>
