@@ -8,8 +8,6 @@ import locationStore from "./locationStore";
 class AuthStore {
   user = null;
   users = [];
-  usersToInvite = [];
-  guests = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -44,9 +42,6 @@ class AuthStore {
     try {
       const response = await instance.get("/authenticate");
       this.users = response.data;
-      this.usersToInvite = response.data;
-      // console.log("fetchusers");
-      // console.log(this.users);
     } catch (error) {
       console.log("AuthStore -> fetchUsers -> error", error);
     }
@@ -146,4 +141,5 @@ class AuthStore {
 
 const authStore = new AuthStore();
 authStore.checkForToken();
+
 export default authStore;
