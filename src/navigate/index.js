@@ -18,7 +18,7 @@ const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
   return (
     // screenOptions renders options for all screens
-    <Navigator initialRouteName="Signin" screenOptions={{}}>
+    <Navigator initialRouteName="GatheringList" screenOptions={{}}>
       <Screen
         name="GatheringList"
         options={{

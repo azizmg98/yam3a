@@ -23,9 +23,8 @@ class GatheringStore {
 
   fetchHostGathering = async () => {
     try {
-      const res = await instance.get(`/gatherings/${authStore.user._id}`);
+      const res = await instance.get(`/gatherings`);
       this.hostedGatherings = res.data;
-      console.log(this.hostedGatherings);
       // console.log("THIS.HOSTEDGATHERINGS");
       // console.log(this.hostedGatherings);
     } catch (error) {
@@ -77,4 +76,5 @@ class GatheringStore {
 
 const gatheringStore = new GatheringStore();
 gatheringStore.fetchHostGathering();
+
 export default gatheringStore;
