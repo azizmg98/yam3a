@@ -10,7 +10,9 @@ const handleAdd = (guest) => {
 const GuestItem = ({ guest }) => {
   return (
     <HStack>
-      <YAText>{guest.user.username}</YAText>
+      <YAText fontSize="18" mt="5">
+        {guest.user.username}
+      </YAText>
       <YAWideButton handlePress={handleAdd}>add</YAWideButton>
     </HStack>
   );

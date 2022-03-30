@@ -50,17 +50,6 @@ class GatheringStore {
       console.log(error);
     }
   };
-
-  addGuest = async (guestId, gatheringId) => {
-    try {
-      const res = await instance.post("/gatherings/guest", {
-        user: guestId,
-        gatherings: gatheringId,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
 }
 
 const gatheringStore = new GatheringStore();

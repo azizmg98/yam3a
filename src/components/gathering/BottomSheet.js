@@ -82,7 +82,7 @@ const BottomSheet = (props) => {
               horizontal={true}
               showsHorizontalScrollIndicator={false}
             >
-              <YAAvatar size={"lg"} marginLeft={3} />
+              <Text>{props.guest}</Text>
               <YAAvatar size={"lg"} marginLeft={3} />
               <YAAvatar size={"lg"} marginLeft={3} />
               <YAAvatar size={"lg"} marginLeft={3} />

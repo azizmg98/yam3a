@@ -1,6 +1,5 @@
 import { instance } from "./instance";
 import { makeAutoObservable } from "mobx";
-import authStore from "./authStore";
 
 class GuestStore {
   availableGuests = [];
@@ -13,6 +12,17 @@ class GuestStore {
     try {
       const res = await instance.get("/guests");
       this.availableGuests = res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  addGuest = async (guestId, gatheringId) => {
+    try {
+      const res = await instance.post("/gatherings/guest", {
+        user: guestId,
+        gatherings: gatheringId,
+      });
     } catch (error) {
       console.log(error);
     }
