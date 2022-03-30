@@ -120,6 +120,28 @@ class AuthStore {
       console.log(error);
     }
   };
+
+  uploadProfileImage = async (user) => {
+    console.log("UPLOAD PROFILE IMAGE");
+    console.log(user.image);
+    try {
+      const formData = new FormData();
+      for (const key in user) {
+        formData.append(key, user[key]);
+      }
+      const res = await instance.put(`/authenticate/${user._id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        transformRequest: (data, headers) => {
+          return formData; // this is doing the trick
+        },
+      });
+      this.user.image = res.data.image;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 const authStore = new AuthStore();

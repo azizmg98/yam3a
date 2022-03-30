@@ -14,14 +14,14 @@ import locationStore from "../../stores/locationStore";
 // Geolocation.setRNConfiguration(config);
 
 const LocationCreate = () => {
-  const [address, setAddress] = useState();
+  const [address, setAddress] = useState({ title: "", add: "" });
   const [pin, setPin] = useState({ latitude: 29.378586, longitude: 47.990341 });
 
   const handleSubmit = () => {
     if (!address.title && !address.add) {
       alert("Kindly fill all boxes to add an Location");
     } else {
-      locationStore.addLocation(address, pin);
+      locationStore.addLocation(address);
     }
   };
 

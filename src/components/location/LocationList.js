@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions, Text } from "react-native";
 import { ScrollView, VStack } from "native-base";
 import React from "react";
 

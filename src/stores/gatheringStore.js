@@ -52,27 +52,38 @@ class GatheringStore {
       console.log(error);
     }
   };
-  // createGathering = async (newGathering, navigation) => {
-  //   try {
-  //     const formData = new FormData();
-  //     for (const key in newGathering) {
-  //       console.log({ key, value: newGathering[key] });
-  //       formData.append(key, newGathering[key]);
-  //     }
-  //     const res = await instance.post(`/gatherings`, formData, {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data",
-  //       },
-  //       transformRequest: (data, headers) => {
-  //         return formData; // this is doing the trick
-  //       },
-  //     });
-  //     this.newGathering = [...this.gatherings, res.data];
-  //     navigation.navigate("GatheringList");
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  createGatheringimage = async (newGathering, navigation) => {
+    if (!newGathering.location) {
+      delete newGathering.location;
+    }
+    try {
+      const formData = new FormData();
+      for (const key in newGathering) {
+        console.log({ key, value: newGathering[key] });
+        formData.append(key, newGathering[key]);
+      }
+
+      console.log(newGathering.host);
+      const res = await fetch(
+        `${instance.defaults.baseURL}/authenticate/${newGathering.host}/gathering`,
+        {
+          method: "post",
+          body: formData,
+          headers: {
+            "content-type": "multipart/form-data",
+            authorization: instance.defaults.headers.common.Authorization,
+          },
+        }
+      );
+
+      const data = await res.json();
+      console.log("LOOK AT ME", data);
+      // this.hostedGatherings = [...this.hostedGatherings, res.data];
+      // navigation.navigate("GatheringList");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 const gatheringStore = new GatheringStore();
