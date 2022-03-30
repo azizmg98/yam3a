@@ -52,7 +52,7 @@ const BottomSheet = (props) => {
   });
 
   const guestList = guestStore.availableGuests.map((guest) => (
-    <GuestItem key={guest._id} guest={guest} />
+    <GuestItem key={guest._id} guest={guest} gatheringId={props.gatheringId} />
   ));
 
   return (

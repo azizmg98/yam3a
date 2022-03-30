@@ -10,10 +10,6 @@ import { baseURL } from "../../stores/instance";
 const GatheringDetail = ({ route, navigation }) => {
   const { gathering } = route.params;
   const { image } = route.params;
-  console.log(
-    "🚀 ~ file: GatheringDetail.js ~ line 12 ~ GatheringDetail ~ gathering",
-    gathering.guests
-  );
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -39,6 +35,7 @@ const GatheringDetail = ({ route, navigation }) => {
           date={gathering.date}
           time={gathering.time}
           location={gathering.location}
+          gatheringId={gathering._id}
         />
       </View>
     </GestureHandlerRootView>

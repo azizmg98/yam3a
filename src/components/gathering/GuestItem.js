@@ -1,13 +1,14 @@
 import { StyleSheet } from "react-native";
-import React from "react";
 import YAWideButton from "../shared/YAWideButton";
 import YAText from "../shared/YAText";
-import { HStack, View } from "native-base";
+import { HStack } from "native-base";
+import guestStore from "../../stores/guestStore";
 
-const handleAdd = (guest) => {
-  authStore.addGuest(guest._id);
-};
-const GuestItem = ({ guest }) => {
+const GuestItem = ({ guest, gatheringId }) => {
+  const handleAdd = (guest, gatheringId) => {
+    guestStore.addGuest(guest._id, gatheringId);
+  };
+
   return (
     <HStack>
       <YAText fontSize="18" mt="5">
