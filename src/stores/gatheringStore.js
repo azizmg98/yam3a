@@ -1,11 +1,9 @@
 import { instance } from "./instance";
 import { makeAutoObservable } from "mobx";
-import authStore from "./authStore";
 
 class GatheringStore {
   hostedGatherings = [];
   gatherings = [];
-  newGathering = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -25,32 +23,34 @@ class GatheringStore {
     try {
       const res = await instance.get(`/gatherings/host`);
       this.hostedGatherings = res.data;
-      // console.log("THIS.HOSTEDGATHERINGS");
-      // console.log(this.hostedGatherings);
     } catch (error) {
       console.error(error);
     }
   };
 
   // function below is not tested
-  createGathering = async (newGathering, navigation) => {
-    console.log(newGathering);
+  createGathering = async (gathering, navigation) => {
     try {
-      // const formData = new FormData();
-      // for (const key in newGathering) {
-      //   console.log({ key, value: newGathering[key] });
-      //   formData.append(key, newGathering[key]);
-      // }
-      const res = await instance.post(
-        `/authenticate/${newGathering.user}/gathering`,
-        newGathering
-      );
-      this.hostedGatherings = [...this.hostedGatherings, res.data];
+      const formData = new FormData();
+      for (const key in gathering) {
+        console.log({ key, value: gathering[key] });
+        formData.append(key, gathering[key]);
+      }
+      const res = await instance.post(`/gatherings`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        transformRequest: (data, headers) => {
+          return formData; // this is doing the trick
+        },
+      });
+      this.gatherings = [...this.gatherings, res.data];
       navigation.navigate("GatheringList");
     } catch (error) {
       console.log(error);
     }
   };
+
   createGatheringimage = async (newGathering, navigation) => {
     if (!newGathering.location) {
       delete newGathering.location;
@@ -83,6 +83,7 @@ class GatheringStore {
       console.log(error);
     }
   };
+
 }
 
 const gatheringStore = new GatheringStore();

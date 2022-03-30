@@ -16,6 +16,7 @@ const Signout = () => {
     authStore.signout();
     navigation.navigate("Signin");
     Alert.alert("Signed Out");
+
     //not signedin
   };
   return (

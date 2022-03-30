@@ -6,7 +6,7 @@ import Signout from "../components/auth/Signout";
 import GatheringList from "../components/gathering/GatheringList";
 import LocationCreate from "../components/location/LocationCreate";
 import LocationList from "../components/location/LocationList";
-import GuestsList from "../components/users/guest/GuestsList";
+import GuestsList from "../components/gathering/GuestList";
 import GatheringDetail from "../components/gathering/GatheringDetail";
 import YAHostProfileIcon from "../components/shared/YAHostProfileIcon";
 import UserProfile from "../components/users/UserProfile";
