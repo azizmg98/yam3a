@@ -12,14 +12,11 @@ import moment from "moment";
 
 const TimePicker = (props) => {
   const { textStyle, defaultTime } = props;
-  // const [time, setTime] = useState(moment(defaultTime).format("LT"));
   const [time, setTime] = useState(moment().format("LT"));
   const [show, setShow] = useState(false);
 
   const onChange = (e, selectedTime) => {
-    console.log("onChange TimePicker " + moment(selectedTime).format("LT"));
     setTime(moment(selectedTime).format("LT"));
-    console.log("LOG TIME " + time);
   };
 
   const onPressCancel = () => {
@@ -27,7 +24,6 @@ const TimePicker = (props) => {
     setShow(false);
   };
   const onPressDone = () => {
-    console.log("onPressDone " + time);
     props.onTimeChange(time);
     setShow(false);
   };
@@ -57,7 +53,6 @@ const TimePicker = (props) => {
                   borderTopColor: "#E9E9E9",
                   borderTopWidth: 1,
                 }}
-                onPress={() => console.log("timePicker clicked")}
               >
                 <View
                   style={{

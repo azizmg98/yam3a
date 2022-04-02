@@ -1,37 +1,28 @@
-import React, { useState, useEffect } from "react";
-import DateTimePicker from "@react-native-community/datetimepicker";
+import React, { useState } from "react";
 import authStore from "../../stores/authStore";
 import gatheringStore from "../../stores/gatheringStore";
-import { TouchableOpacity } from "react-native";
 import {
   StyleSheet,
   Text,
   View,
   Dimensions,
   Platform,
-  TextInput,
-  TouchableHighlight,
-  Modal,
 } from "react-native";
 import { Button, VStack, Input, HStack } from "native-base";
 import DatePicker from "./DatePicker";
 import TimePicker from "./TimePicker";
 import moment from "moment";
-import LocationCreate from "../location/LocationCreate";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import YAWideButton from "../shared/YAWideButton";
 import locationStore from "../../stores/locationStore";
-// import { observer } from "mobx-react";
 
 const GatheringCreate = ({ route, navigation }) => {
   const location = route.params;
   const user = authStore.user;
   const gatheringLocation = locationStore.gatheringLocation;
-  console.log(location);
 
   const [show, setShow] = useState(false);
 
-  //   const [image1, setImage] = useState(null);
   const [loc, setLoc] = useState(location?._id);
   const [newGathering, setNewGathering] = useState({
     user: user._id,
@@ -42,11 +33,6 @@ const GatheringCreate = ({ route, navigation }) => {
     image: "https://i.redd.it/zemm8u5nzqd21.png",
   });
 
-  // useEffect(() => {
-  //   console.log("rendered");
-  // }, [location]);
-  // ////Date-Time Picker
-
   const [isPickerShow, setIsPickerShow] = useState(false);
   const [date, setDate] = useState(new Date(Date.now()));
 
@@ -56,37 +42,15 @@ const GatheringCreate = ({ route, navigation }) => {
 
   const handleCreate = () => {
     gatheringStore.createGathering(newGathering, navigation);
-    // if (date) {
-    //   () => gatheringStore.newGathering(newGathering);
-    //   setIsPickerShow(false);
-    // }
   };
 
   const onChange = (event, value) => {
     setDate(value);
-    console.log(value);
     if (Platform.OS === "android") {
       setIsPickerShow(false);
     }
   };
 
-  //   newGathering.image = image1;
-  //   const pickImage = async () => {
-  //     // No permissions request is necessary for launching the image library
-  //     let result = await ImagePicker.launchImageLibraryAsync({
-  //       mediaTypes: ImagePicker.MediaTypeOptions.All,
-  //       allowsEditing: true,
-  //       aspect: [4, 3],
-  //       quality: 1,
-  //     });
-
-  //     console.log(result);
-
-  //     if (!result.cancelled) {
-  //       setImage(result.uri);
-  //     }
-  //   };
-  console.log(newGathering);
   return (
     <View style={styles.container}>
       <View style={styles.titleBar}>
@@ -102,7 +66,6 @@ const GatheringCreate = ({ route, navigation }) => {
       <Text style={styles.subHeader}>Add Gathering Title</Text>
       <Input
         placeholder="Gathering Title"
-        // value={newGathering.title}
         autoCorrect={false}
         onChangeText={(gatheringTitle) =>
           setNewGathering({ ...newGathering, title: gatheringTitle })
@@ -148,23 +111,6 @@ const GatheringCreate = ({ route, navigation }) => {
           </VStack>
         </View>
       </HStack>
-
-      {/* <Pressable onPress={pickImage}>
-          {image1 ? (
-            <Image
-              source={{
-                uri: image1.includes("file") ? image1 : baseUrl + image1,
-              }}
-              style={{ width: 200, height: 200, borderRadius: 100 }}
-            />
-          ) : (
-            <Image
-              source={require("")}
-              style={{ width: 200, height: 200, borderRadius: 100 }}
-            />
-          )}
-        </Pressable> */}
-      {/* <Text style={styles.pickedDate}>{date.toUTCString()}</Text> */}
       <HStack style={styles.actionRow}>
         <Button
           variant="ghost"
@@ -204,8 +150,6 @@ const GatheringCreate = ({ route, navigation }) => {
           title="Create"
           handlePress={
             handleCreate
-            // () => gatheringStore.newGathering(newGathering)
-            //  gatheringStore.newGathering(user._id, newGathering)
           }
         />
       </HStack>

@@ -18,13 +18,12 @@ class AuthStore {
       const res = await instance.post("/authenticate/signin", user);
       this.setUser(res.data.token);
       this.fetchUsers();
-      // console.log(this.user);
       navigation.navigate("GatheringList");
     } catch (error) {
       if (error.message == "Request failed with status code 401") {
         alert("username or password is wrong");
       }
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -34,7 +33,7 @@ class AuthStore {
       await this.setUser(res.data.token);
       navigation.navigate("GatheringList");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -43,7 +42,7 @@ class AuthStore {
       const response = await instance.get("/authenticate");
       this.users = response.data;
     } catch (error) {
-      console.log("AuthStore -> fetchUsers -> error", error);
+      console.error("AuthStore -> fetchUsers -> error", error);
     }
   };
 
@@ -53,7 +52,7 @@ class AuthStore {
       this.users = [];
       await AsyncStorage.removeItem("myToken");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -66,7 +65,7 @@ class AuthStore {
       locationStore.fetchUserLocations();
       console.log(this.user);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -83,7 +82,7 @@ class AuthStore {
         }
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 }

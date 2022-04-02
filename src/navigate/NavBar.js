@@ -1,5 +1,4 @@
-import { StyleSheet, Text, View, Dimensions } from "react-native";
-import React from "react";
+import { StyleSheet, Dimensions } from "react-native";
 import { Box } from "native-base";
 
 // importing libraries:
@@ -10,8 +9,7 @@ import AddGuestsIcon from "../components/shared/AddGuestsIcon";
 import LocationListIcon from "../components/shared/LocationListIcon";
 import GatheringListIcon from "../components/shared/GatheringListIcon";
 import CreateGatheringIcon from "../components/shared/CreateGatheringIcon";
-import { observer, Observer } from "mobx-react";
-// importing Observer:
+import { observer } from "mobx-react";
 
 const Tab = createBottomTabNavigator();
 

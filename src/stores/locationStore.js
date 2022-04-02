@@ -1,15 +1,11 @@
 import { instance } from "./instance";
 import { makeAutoObservable } from "mobx";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import authStore from "./authStore";
 import { useNavigation } from "@react-navigation/native";
-import LocationList from "../components/location/LocationList";
 
 class LocationStore {
-  location = null;
   locations = [];
   userLocations = [];
-  gatheringLocation = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -20,7 +16,7 @@ class LocationStore {
       const response = await instance.get("/locations");
       this.locations = response.data;
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -30,10 +26,9 @@ class LocationStore {
     try {
       const response = await instance.post("/locations", newLocation);
       this.locations.push(response.data);
-      console.log(this.locations);
       navigation.navigate("LocationList");
     } catch (error) {
-      console.log(
+      console.error(
         "🚀 ~ file: locationStore.js ~ line 18 ~ locationStore ~ addLocation = ~ error",
         error
       );
@@ -45,9 +40,6 @@ class LocationStore {
       if (authStore.user) {
         const res = await instance.get(`/locations/${authStore.user._id}`);
         this.userLocations = res.data;
-        console.log(this.userLocations);
-        // console.log("THIS.HOSTEDGATHERINGS");
-        // console.log(this.hostedGatherings);
       }
     } catch (error) {
       console.error(error);

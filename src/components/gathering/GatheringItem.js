@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { useState, useEffect } from "react";
 import YAListItem from "../shared/YAListItem";
-import { Pressable, Hstack } from "native-base";
+import { Pressable } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { baseURL } from "../../stores/instance";
 

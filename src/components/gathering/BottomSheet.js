@@ -15,12 +15,10 @@ import Animated, {
 } from "react-native-reanimated";
 import YATitle from "../shared/YATitle";
 import { useNavigation } from "@react-navigation/native";
-import { Button, HStack, VStack } from "native-base";
+import { HStack, VStack } from "native-base";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import YAText from "../shared/YAText";
 import YAAvatar from "../shared/YAAvatar";
-import YAWideButton from "../shared/YAWideButton";
-import authStore from "../../stores/authStore";
 import guestStore from "../../stores/guestStore";
 import GuestItem from "./GuestItem";
 

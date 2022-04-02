@@ -9,9 +9,6 @@ import YAWideButton from "../shared/YAWideButton";
 
 // importing Stores:
 import locationStore from "../../stores/locationStore";
-// import Geolocation from "@react-native-community/geolocation";
-
-// Geolocation.setRNConfiguration(config);
 
 const LocationCreate = () => {
   const [address, setAddress] = useState();
@@ -46,7 +43,6 @@ const LocationCreate = () => {
                 rankby: "distance",
               }}
               onPress={(data, details = null) => {
-                console.log(data, details);
               }}
               query={{
                 key: `AIzaSyBymxkNtegpiXRziSZU85FfBWCcYi5xY_Y`,
@@ -58,10 +54,8 @@ const LocationCreate = () => {
             coordinate={pin}
             draggable={true}
             onDragStart={(e) => {
-              console.log("Drag Start", pin);
             }}
             onDragEnd={(e) => (
-              console.log("Drag End", e.nativeEvent.coordinate),
               setPin(e.nativeEvent.coordinate)
             )}
           >

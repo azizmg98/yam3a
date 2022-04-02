@@ -1,8 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import LocationCreate from "../location/LocationCreate";
 
 const AddLocationIcon = () => {
   const navigation = useNavigation();

@@ -12,14 +12,11 @@ import moment from "moment";
 
 const DTPicker = (props) => {
   const { textStyle, defaultDate } = props;
-  // const [time, setTime] = useState(moment(defaultTime).format("LT"));
   const [date, setDate] = useState(moment().format("LLLL"));
   const [show, setShow] = useState(false);
 
   const onChange = (e, selectedDate) => {
-    console.log("onChange TimePicker " + moment(selectedDate).format("LLLL"));
     setDate(moment(selectedDate).format("LLLL"));
-    console.log("LOG DATE " + date);
   };
 
   const onPressCancel = () => {
@@ -27,7 +24,6 @@ const DTPicker = (props) => {
     setShow(false);
   };
   const onPressDone = () => {
-    console.log("onPressDone " + date);
     props.onDateChange(date);
     setShow(false);
   };
@@ -57,7 +53,6 @@ const DTPicker = (props) => {
                   borderTopColor: "#E9E9E9",
                   borderTopWidth: 1,
                 }}
-                onPress={() => console.log("timePicker clicked")}
               >
                 <View
                   style={{
@@ -127,7 +122,6 @@ const styles = StyleSheet.create({
 {
   /* <DTPicker
 defaultDate={moment().format("LLLL")}
-onDateChange={(value) => console.log("time changed to " + value)}
 textStyle={{
   paddingVertical: 15,
   paddingHorizontal: 10,

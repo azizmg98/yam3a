@@ -17,7 +17,6 @@ const DatePicker = (props) => {
 
   const onChange = (e, selectedDate) => {
     setDate(moment(selectedDate));
-    console.log(date);
   };
 
   const onPressCancel = () => {
@@ -54,7 +53,6 @@ const DatePicker = (props) => {
                   borderTopColor: "#E9E9E9",
                   borderTopWidth: 1,
                 }}
-                onPress={() => console.log("datePicker clicked")}
               >
                 <View
                   style={{
