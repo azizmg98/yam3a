@@ -1,6 +1,5 @@
 import { StyleSheet, View, Dimensions } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import BottomSheet from "./BottomSheet";
 import { Ionicons } from "@expo/vector-icons";
@@ -19,12 +18,7 @@ const GatheringDetail = ({ route, navigation }) => {
           color="white"
           onPress={() => navigation.navigate("UserProfile")}
         />
-        {/* <Image
-          source={{ uri: baseURL + gathering.image }}
-          style={styles.yam3aImage}
-          resizeMode="cover"
-        ></Image> */}
-
+       
         <BottomSheet
           key={gathering._id}
           gathering={gathering}

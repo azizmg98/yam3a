@@ -50,7 +50,7 @@ class GatheringStore {
     }
   };
 
-  createGatheringimage = async (newGathering, navigation) => {
+  createGatheringimage = async (newGathering) => {
     if (!newGathering.location) {
       delete newGathering.location;
     }

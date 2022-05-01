@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
 import { ScrollView, HStack } from "native-base";
-import React from "react";
 
 const GatheringGuests = ({ guest }) => {
   return (
