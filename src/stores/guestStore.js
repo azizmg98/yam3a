@@ -13,7 +13,7 @@ class GuestStore {
       const res = await instance.get("/guests");
       this.availableGuests = res.data;
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -24,7 +24,7 @@ class GuestStore {
         gatherings: gatheringId,
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 }

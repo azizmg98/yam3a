@@ -33,7 +33,6 @@ class GatheringStore {
     try {
       const formData = new FormData();
       for (const key in gathering) {
-        console.log({ key, value: gathering[key] });
         formData.append(key, gathering[key]);
       }
       const res = await instance.post(`/gatherings`, formData, {
@@ -47,7 +46,7 @@ class GatheringStore {
       this.gatherings = [...this.gatherings, res.data];
       navigation.navigate("GatheringList");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -58,11 +57,9 @@ class GatheringStore {
     try {
       const formData = new FormData();
       for (const key in newGathering) {
-        console.log({ key, value: newGathering[key] });
         formData.append(key, newGathering[key]);
       }
 
-      console.log(newGathering.host);
       const res = await fetch(
         `${instance.defaults.baseURL}/authenticate/${newGathering.host}/gathering`,
         {
@@ -76,11 +73,10 @@ class GatheringStore {
       );
 
       const data = await res.json();
-      console.log("LOOK AT ME", data);
       // this.hostedGatherings = [...this.hostedGatherings, res.data];
       // navigation.navigate("GatheringList");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

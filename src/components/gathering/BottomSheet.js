@@ -15,12 +15,10 @@ import Animated, {
 } from "react-native-reanimated";
 import YATitle from "../shared/YATitle";
 import { useNavigation } from "@react-navigation/native";
-import { Button, Center, HStack, VStack } from "native-base";
+import { Button, HStack, VStack } from "native-base";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import YAText from "../shared/YAText";
 import YAAvatar from "../shared/YAAvatar";
-import YAWideButton from "../shared/YAWideButton";
-import authStore from "../../stores/authStore";
 import guestStore from "../../stores/guestStore";
 import GuestItem from "./GuestItem";
 import GatheringGuests from "./GatheringGuests";
@@ -52,7 +50,7 @@ const BottomSheet = (props) => {
     };
   });
 
-  const guestList = guestStore.availableGuests.map((guest) => (
+  const guestList = props.guests&&guestStore.availableGuests.map((guest) => (
     <GuestItem key={guest._id} guest={guest} gatheringId={props.gatheringId} />
   ));
 
@@ -108,7 +106,7 @@ const BottomSheet = (props) => {
           >
             Invite guests
           </Button>
-          {/* <VStack>{guestList}</VStack> */}
+          <VStack>{guestList}</VStack>
         </View>
       </Animated.View>
     </GestureDetector>

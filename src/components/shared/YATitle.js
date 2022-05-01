@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 import { Text } from "native-base";
-import React from "react";
 
 const YATitle = (props) => {
   return (

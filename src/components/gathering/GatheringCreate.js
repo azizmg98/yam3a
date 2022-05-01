@@ -10,7 +10,6 @@ import {
   FormControl,
   Center,
   Image,
-  Pressable,
   ScrollView,
 } from "native-base";
 import DatePicker from "./DatePicker";
@@ -25,11 +24,9 @@ import { observer } from "mobx-react";
 
 const GatheringCreate = ({ navigation }) => {
   // fetching all required variables:
-  // const location = route.params;
 
   const user = authStore.user;
   const gatheringLocation = locationStore.gatheringLocation;
-  // console.log(location);
 
   //   useStates:
   // const [image1, setImage1] = useState();

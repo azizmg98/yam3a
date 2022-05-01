@@ -1,27 +1,19 @@
 import { StyleSheet, Dimensions, View } from "react-native";
 import {
   Box,
-  AspectRatio,
-  Image,
-  Center,
-  Stack,
   HStack,
-  Heading,
   Text,
   VStack,
   Button,
 } from "native-base";
-import { baseURL } from "../../stores/instance";
 
 // importing shared components:
 import YAText from "./YAText";
 import YAImageS from "./YAImageS";
-import YAAvatar from "./YAAvatar";
 import YATitle from "./YATitle";
 
 // importing icons:
 import { Ionicons, AntDesign } from "@expo/vector-icons";
-import { color } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
 const YAListItem = (props) => {
   return (

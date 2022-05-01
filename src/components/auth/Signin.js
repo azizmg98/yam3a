@@ -18,7 +18,6 @@ import {
   FormControl,
   Center,
   Input,
-  Link,
   NativeBaseProvider,
 } from "native-base";
 import { observer } from "mobx-react";

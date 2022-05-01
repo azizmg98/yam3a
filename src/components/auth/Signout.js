@@ -1,12 +1,7 @@
-import { StyleSheet, Text, View, Alert } from "react-native";
+import { StyleSheet, View, Alert } from "react-native";
 import React from "react";
-import { NativeBaseProvider, Button, VStack } from "native-base";
 import { Entypo } from "@expo/vector-icons";
-
-// import styles from "./shared/Styles";
-// import { FontAwesome } from "@expo/vector-icons";
 import { observer } from "mobx-react";
-// import YATitle from "./shared/YATitle";
 import authStore from "../../stores/authStore";
 import { useNavigation } from "@react-navigation/native";
 

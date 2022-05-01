@@ -1,6 +1,5 @@
-import { StyleSheet, TextInput } from "react-native";
+import { StyleSheet } from "react-native";
 import { Input } from "native-base";
-import React from "react";
 
 const YATextInput = (props) => {
   return (

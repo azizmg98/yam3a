@@ -1,7 +1,5 @@
 import { StyleSheet, Dimensions, Text } from "react-native";
 import { ScrollView, VStack } from "native-base";
-import React from "react";
-
 import locationStore from "../../stores/locationStore";
 import LocationItem from "./LocationItem";
 import { observer } from "mobx-react";

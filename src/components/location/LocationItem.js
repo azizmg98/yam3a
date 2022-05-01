@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { StyleSheet, View, Dimensions } from "react-native";
 import { HStack, NativeBaseProvider, VStack, Box, Button } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import YATitle from "../shared/YATitle";

@@ -13,7 +13,7 @@ import { useState } from "react";
 import authStore from "../../stores/authStore";
 import { NativeBaseProvider } from "native-base";
 
-const Signup = ({ route, navigation }) => {
+const Signup = ({ navigation }) => {
   const [user, setUser] = useState({
     username: "",
     password: "",

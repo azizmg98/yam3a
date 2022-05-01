@@ -16,12 +16,8 @@ import gatheringStore from "../../stores/gatheringStore";
 import YATitle from "../shared/YATitle";
 import { Box, Button, HStack, Pressable, VStack } from "native-base";
 import YAText from "../shared/YAText";
-
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
-
-import GatheringDetail from "../gathering/GatheringDetail";
-
 
 const UserProfile = ({ navigation }) => {
   const user = authStore.user;

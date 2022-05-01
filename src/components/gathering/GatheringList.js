@@ -1,13 +1,9 @@
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import React from "react";
 import gatheringStore from "../../stores/gatheringStore";
 import GatheringItem from "./GatheringItem";
 import { observer } from "mobx-react";
-
-import NavBar from "../../navigate/NavBar";
-
 import { ScrollView, VStack } from "native-base";
-import YAListItem from "../shared/YAListItem";
 
 const GatheringList = () => {
   const gatheringList = gatheringStore.hostedGatherings.map((gathering) => (

@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import YAWideButton from "../shared/YAWideButton";
 import YAText from "../shared/YAText";
 import { Button, HStack, Pressable } from "native-base";
 import guestStore from "../../stores/guestStore";
@@ -7,7 +6,6 @@ import guestStore from "../../stores/guestStore";
 const GuestItem = ({ guest, gatheringId }) => {
   const handleAdd = () => {
     guestStore.addGuest(guest._id, gatheringId);
-    console.log("added", guest._id);
   };
 
   return (

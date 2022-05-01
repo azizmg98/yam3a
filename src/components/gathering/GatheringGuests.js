@@ -3,7 +3,6 @@ import { ScrollView, HStack } from "native-base";
 import React from "react";
 
 const GatheringGuests = ({ guest }) => {
-  console.log(guest);
   return (
     <View>
       <ScrollView>

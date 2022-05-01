@@ -17,7 +17,6 @@ const DatePicker = (props) => {
 
   const onChange = (e, selectedDate) => {
     setDate(moment(selectedDate));
-    console.log(date);
   };
 
   const onPressCancel = () => {

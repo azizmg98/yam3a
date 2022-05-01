@@ -1,16 +1,13 @@
-import { StyleSheet, View, Dimensions, Text } from "react-native";
+import { StyleSheet, View, Dimensions } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import BottomSheet from "./BottomSheet";
-import { Image } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
-import { baseURL } from "../../stores/instance";
 
 const GatheringDetail = ({ route, navigation }) => {
   const gathering = route.params;
-  console.log("inside gathering details");
-  console.log(gathering);
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={styles.container}>
@@ -31,9 +28,9 @@ const GatheringDetail = ({ route, navigation }) => {
         <BottomSheet
           key={gathering._id}
           gathering={gathering}
-          // guests={gathering.guests}
-          // date={gathering.date}
-          // time={gathering.time}
+          guests={gathering.guests}
+          date={gathering.date}
+          time={gathering.time}
           // location={gathering.location}
         />
       </View>
