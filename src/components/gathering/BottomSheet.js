@@ -6,7 +6,7 @@ import {
   ScrollView,
   SafeAreaView,
 } from "react-native";
-import { React, useEffect } from "react";
+import { useEffect } from "react";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
   useAnimatedStyle,

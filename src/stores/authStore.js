@@ -3,7 +3,6 @@ import { makeAutoObservable } from "mobx";
 import decode from "jwt-decode";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import gatheringStore from "./gatheringStore";
-import { useEffect } from "react";
 class AuthStore {
   user = null;
   users = [];

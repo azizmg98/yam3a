@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import authStore from "../../stores/authStore";
 import {
-  SafeAreaView,
   StyleSheet,
   Text,
-  View,
-  Image,
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
@@ -33,10 +30,6 @@ const Signin = ({ navigation }) => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <NativeBaseProvider>
         <Center w="100%" style={{ backgroundColor: "white", height: "100%" }}>
-          {/* <Image
-          source={require("../../assets/istockphoto.jpeg")}
-          style={styles.image}
-        /> */}
           <Box safeArea p="2" py="8" w="90%" maxW="290">
             <Heading
               size="lg"
@@ -79,19 +72,6 @@ const Signin = ({ navigation }) => {
                   type="password"
                   onChangeText={(password) => setUser({ ...user, password })}
                 />
-                {/* <Text
-                  onPress={() => navigation.navigate("ForgetPassword")}
-                  style={styles.pass}
-                  _text={{
-                    fontSize: "xs",
-                    fontWeight: "500",
-                    color: "indigo.500",
-                  }}
-                  alignSelf="flex-end"
-                  mt="1"
-                >
-                  Forget Password?
-                </Text> */}
               </FormControl>
               <Button onPress={handleSubmit} mt="2" colorScheme="indigo">
                 Sign in
