@@ -12,7 +12,6 @@ import moment from "moment";
 
 const DTPicker = (props) => {
   const { textStyle, defaultDate } = props;
-  // const [time, setTime] = useState(moment(defaultTime).format("LT"));
   const [date, setDate] = useState(moment().format("LLLL"));
   const [show, setShow] = useState(false);
 
@@ -123,16 +122,3 @@ const styles = StyleSheet.create({
     right: 0,
   },
 });
-
-{
-  /* <DTPicker
-defaultDate={moment().format("LLLL")}
-onDateChange={(value) => console.log("time changed to " + value)}
-textStyle={{
-  paddingVertical: 15,
-  paddingHorizontal: 10,
-  borderColor: "grey",
-  borderWidth: 1,
-}}
-/> */
-}

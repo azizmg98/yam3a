@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Dimensions, Platform } from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import { useState } from "react";
 import authStore from "../../stores/authStore";
 import gatheringStore from "../../stores/gatheringStore";
@@ -15,7 +15,6 @@ import {
 import DatePicker from "./DatePicker";
 import TimePicker from "./TimePicker";
 import moment from "moment";
-
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import YAWideButton from "../shared/YAWideButton";
 import locationStore from "../../stores/locationStore";
@@ -28,8 +27,6 @@ const GatheringCreate = ({ navigation }) => {
   const user = authStore.user;
   const gatheringLocation = locationStore.gatheringLocation;
 
-  //   useStates:
-  // const [image1, setImage1] = useState();
   const [isPickerShow, setIsPickerShow] = useState(false);
   const [date, setDate] = useState(new Date(Date.now()));
   const [image, setImage] = useState(null);
@@ -48,17 +45,8 @@ const GatheringCreate = ({ navigation }) => {
     setIsPickerShow(true);
   };
   const handleCreate = () => {
-    // gatheringStore.createGatheringimage(newGathering, navigation);
     gatheringStore.createGatheringimage(newGathering, navigation);
   };
-
-  // const onChange = (event, value) => {
-  //   setDate(value);
-  //   console.log(value);
-  //   if (Platform.OS === "android") {
-  //     setIsPickerShow(false);
-  //   }
-  // };
 
   const pickImage = async (image) => {
     console.log("Im Clicked");
@@ -98,7 +86,6 @@ const GatheringCreate = ({ navigation }) => {
         <Text style={styles.subHeader}>Add Gathering Title</Text>
         <Input
           placeholder="Gathering Title"
-          // value={newGathering.title}
           autoCorrect={false}
           onChangeText={(gatheringTitle) =>
             setNewGathering({ ...newGathering, title: gatheringTitle })
@@ -162,21 +149,6 @@ const GatheringCreate = ({ navigation }) => {
           </HStack>
         </View>
         <HStack style={styles.actionRow}>
-          {/* <Pressable onPress={pickImage}>
-          {image1 ? (
-            <Image
-              source={{
-                uri: image1.includes("file") ? image1 : baseUrl + image1,
-              }}
-              style={{ width: 200, height: 200, borderRadius: 100 }}
-            />
-          ) : (
-            <Image
-              source={require("../../../assets/icon.png")}
-              style={{ width: 200, height: 200, borderRadius: 100 }}
-            />
-          )}
-        </Pressable> */}
           <FormControl>
             <Center>
               {image ? (
@@ -210,38 +182,7 @@ const GatheringCreate = ({ navigation }) => {
               </Button>
             )}
           </FormControl>
-          {/* <FormControl>
-          <Center>
-            {image ? (
-              <Image
-                source={{ uri: image.uri }}
-                alt="trip image"
-                size="2xl"
-                mb={3}
-                rounded={20}
-              />
-            ) : null}
-          </Center>
-          {image === null ? (
-            <Button
-              variant="ghost"
-              _text={{ color: "#6320EE" }}
-              // onPress={pickImage}
-              onPress={pickImage}
-            >
-              + Add Image
-            </Button>
-          ) : (
-            <Button
-              onPress={() => pickImage(image)}
-              mt="0"
-              colorScheme="red"
-              variant="outline"
-            >
-              Replace Image
-            </Button>
-          )}
-        </FormControl> */}
+     
         </HStack>
 
         <HStack style={{ marginTop: 20 }}>
@@ -249,8 +190,6 @@ const GatheringCreate = ({ navigation }) => {
             title="Create"
             handlePress={
               handleCreate
-              // () => gatheringStore.newGathering(newGathering)
-              //  gatheringStore.newGathering(user._id, newGathering)
             }
           />
         </HStack>
@@ -274,7 +213,7 @@ const styles = StyleSheet.create({
     color: "#454545",
     fontSize: 20,
     // fontFamily: "Helvetica-Bold",
-    fontFamily: "Verdana-Bold",
+    // fontFamily: "Verdana-Bold",
     textTransform: "uppercase",
     alignSelf: "center",
     marginBottom: 20,
@@ -339,7 +278,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   text: {
-    fontFamily: "Verdana-Italic",
+    // fontFamily: "Verdana-Italic",
     fontSize: 14,
     textAlignVertical: "center",
     color: "#454545",

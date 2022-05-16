@@ -1,5 +1,4 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import authStore from "../stores/authStore";
 import Signup from "../components/auth/Signup";
 import Signin from "../components/auth/Signin";
 import Signout from "../components/auth/Signout";
@@ -76,7 +75,6 @@ const RootNavigator = () => {
         component={GatheringCreate}
       />
 
-      {/* {!authStore.user && ( */}
       <Screen
         name="Signin"
         component={Signin}
